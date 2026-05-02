@@ -5,7 +5,7 @@ services:
     image: postgres:15-alpine
     container_name: nyansa_db
     environment:
-      POSTGRES_USER: nyansa
+      POSTGRES_USER: nyansa_ai
       POSTGRES_PASSWORD: 12345678
       POSTGRES_DB: nyansa_ai
     volumes:
@@ -22,7 +22,7 @@ services:
     container_name: nyansa_backend
     environment:
       DEBUG: 'True'
-      DATABASE_URL: postgresql://nyansa:12345678@postgres:5432/nyansa_ai
+      DATABASE_URL: postgresql://nyansa_ai:12345678@postgres:5432/nyansa_ai
       ALLOWED_HOSTS: 'localhost,127.0.0.1'
     ports:
       - "8000:8000"

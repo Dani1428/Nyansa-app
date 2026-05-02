@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface ProjectRequest {
   id: string;
@@ -11,9 +12,31 @@ interface ProjectRequest {
 }
 
 const ProjectRequests = () => {
+  const location = useLocation();
   const [requests, setRequests] = useState<ProjectRequest[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
+  const [filter, setFilter] = useState<'All' | 'New' | 'Pending'>('All');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newProject, setNewProject] = useState({ 
+    name: '', 
+    email: '', 
+    project_type: 'Language Request',
+    region: '',
+    language: '',
+    description: '',
+    priority: 'Medium'
+  });
+
+  // Check for create query param
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('create') === 'true') {
+      setIsModalOpen(true);
+      // Clean up the URL without reloading to avoid re-opening on refresh
+      window.history.replaceState({}, '', location.pathname);
+    }
+  }, [location]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -23,12 +46,22 @@ const ProjectRequests = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/api/v1/contact/')
+    const token = localStorage.getItem('token');
+    fetch('/api/v1/contact/', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
       .then(res => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json();
       })
-      .then(data => setRequests(data))
+      .then(data => {
+        // Handle paginated or direct array results defensively
+        const list = (data && data.results) ? data.results : (Array.isArray(data) ? data : []);
+        setRequests(list);
+      })
       .catch(err => console.error('Error fetching project requests:', err))
       .finally(() => setIsLoading(false));
   }, []);
@@ -43,10 +76,14 @@ const ProjectRequests = () => {
   };
 
   const updateStatus = async (id: string, newStatus: string) => {
+    const token = localStorage.getItem('token');
     try {
       const response = await fetch(`/api/v1/contact/${id}/`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ status: newStatus })
       });
       if (response.ok) {
@@ -56,6 +93,55 @@ const ProjectRequests = () => {
       console.error('Error updating status:', error);
     }
   };
+
+  const handleCreateProject = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    
+    // Construct message including region/language details if provided
+    const messageContent = `${newProject.description}${newProject.region ? ` \nRegion: ${newProject.region}` : ''}${newProject.language ? ` \nLanguage: ${newProject.language}` : ''}`;
+
+    const payload = {
+      name: newProject.name,
+      email: newProject.email,
+      project_type: newProject.project_type,
+      message: messageContent,
+      status: 'New'
+    };
+
+    try {
+      const response = await fetch('/api/v1/contact/', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const savedProject = await response.json();
+        setRequests([savedProject, ...requests]);
+        setIsModalOpen(false);
+        setNewProject({ 
+          name: '', email: '', project_type: 'Language Request', 
+          region: '', language: '', description: '', priority: 'Medium' 
+        });
+      }
+    } catch (error) {
+      console.error('Error creating project:', error);
+    }
+  };
+
+  const safeRequests = Array.isArray(requests) ? requests : [];
+  const filteredRequests = safeRequests.filter(req => {
+    if (filter === 'All') return true;
+    if (filter === 'New') return req.status === 'New';
+    if (filter === 'Pending') return req.status === 'In Review';
+    return true;
+  });
+
+  const newRequests = safeRequests.filter(r => r.status === 'New');
 
   const getProjectTypeStyles = (type: string) => {
     switch(type) {
@@ -81,23 +167,150 @@ const ProjectRequests = () => {
           <p className="admin-page-desc">Review and manage incoming agricultural linguistic inquiries.</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', backgroundColor: 'var(--color-surface-container-low)', padding: '0.375rem', borderRadius: '0.75rem', border: '1px solid rgba(0,0,0,0.05)' }}>
-          <button style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: 800, backgroundColor: 'var(--color-white)', color: 'var(--color-primary)', border: 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', cursor: 'pointer' }}>All</button>
-          <button style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-on-surface-variant)', background: 'none', border: 'none', cursor: 'pointer' }}>New</button>
-          <button style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-on-surface-variant)', background: 'none', border: 'none', cursor: 'pointer' }}>Pending</button>
+          <button 
+            onClick={() => setFilter('All')}
+            style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: filter === 'All' ? 800 : 600, backgroundColor: filter === 'All' ? 'var(--color-white)' : 'transparent', color: filter === 'All' ? 'var(--color-primary)' : 'var(--color-on-surface-variant)', border: 'none', boxShadow: filter === 'All' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none', cursor: 'pointer' }}
+          >All</button>
+          <button 
+            onClick={() => setFilter('New')}
+            style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: filter === 'New' ? 800 : 600, backgroundColor: filter === 'New' ? 'var(--color-white)' : 'transparent', color: filter === 'New' ? 'var(--color-primary)' : 'var(--color-on-surface-variant)', border: 'none', boxShadow: filter === 'New' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none', cursor: 'pointer' }}
+          >New</button>
+          <button 
+            onClick={() => setFilter('Pending')}
+            style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: filter === 'Pending' ? 800 : 600, backgroundColor: filter === 'Pending' ? 'var(--color-white)' : 'transparent', color: filter === 'Pending' ? 'var(--color-primary)' : 'var(--color-on-surface-variant)', border: 'none', boxShadow: filter === 'Pending' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none', cursor: 'pointer' }}
+          >Pending</button>
         </div>
       </div>
+
+      {/* Modal for New Project - Harmonized with Datasets style */}
+      {isModalOpen && (
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+          <div style={{ backgroundColor: 'var(--color-surface)', width: '100%', maxWidth: '600px', borderRadius: '1rem', padding: '2rem', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', overflowY: 'auto', maxHeight: '90vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-on-surface)' }}>Nouveau Projet</h2>
+              <button onClick={() => setIsModalOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', color: 'var(--color-on-surface-variant)' }}>
+                <span className="material-symbols-outlined">close</span>
+              </button>
+            </div>
+            
+            <form onSubmit={handleCreateProject} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.375rem', color: 'var(--color-on-surface)' }}>Client / Demandeur *</label>
+                  <input 
+                    required 
+                    type="text" 
+                    value={newProject.name} 
+                    onChange={e => setNewProject({...newProject, name: e.target.value})} 
+                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-container-low)', color: 'var(--color-on-surface)' }} 
+                    placeholder="Nom complet" 
+                  />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.375rem', color: 'var(--color-on-surface)' }}>Email de Contact *</label>
+                  <input 
+                    required 
+                    type="email" 
+                    value={newProject.email} 
+                    onChange={e => setNewProject({...newProject, email: e.target.value})} 
+                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-container-low)', color: 'var(--color-on-surface)' }} 
+                    placeholder="exemple@nyansa.ai" 
+                  />
+                </div>
+              </div>
+              
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.375rem', color: 'var(--color-on-surface)' }}>Région Cible</label>
+                  <input 
+                    type="text" 
+                    value={newProject.region} 
+                    onChange={e => setNewProject({...newProject, region: e.target.value})} 
+                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-container-low)', color: 'var(--color-on-surface)' }} 
+                    placeholder="ex: Vallée du Rift, Kenya" 
+                  />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.375rem', color: 'var(--color-on-surface)' }}>Langue / Dialecte</label>
+                  <input 
+                    type="text" 
+                    value={newProject.language} 
+                    onChange={e => setNewProject({...newProject, language: e.target.value})} 
+                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-container-low)', color: 'var(--color-on-surface)' }} 
+                    placeholder="ex: Swahili, Wolof..." 
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.375rem', color: 'var(--color-on-surface)' }}>Type de Mission</label>
+                  <select 
+                    value={newProject.project_type} 
+                    onChange={e => setNewProject({...newProject, project_type: e.target.value})} 
+                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-container-low)', color: 'var(--color-on-surface)' }}
+                  >
+                    <option>Language Request</option>
+                    <option>Expert Application</option>
+                    <option>Dataset Inquiry</option>
+                  </select>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.375rem', color: 'var(--color-on-surface)' }}>Priorité</label>
+                  <select 
+                    value={newProject.priority} 
+                    onChange={e => setNewProject({...newProject, priority: e.target.value})} 
+                    style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-container-low)', color: 'var(--color-on-surface)' }}
+                  >
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.375rem', color: 'var(--color-on-surface)' }}>Description du Projet</label>
+                <textarea 
+                  value={newProject.description} 
+                  onChange={e => setNewProject({...newProject, description: e.target.value})} 
+                  rows={3} 
+                  style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-container-low)', color: 'var(--color-on-surface)', resize: 'none' }} 
+                  placeholder="Objectifs de la collecte..." 
+                />
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem', marginTop: '1rem' }}>
+                <button 
+                  type="button" 
+                  onClick={() => setIsModalOpen(false)} 
+                  style={{ padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, backgroundColor: 'transparent', color: 'var(--color-on-surface)', border: '1px solid var(--color-border)', cursor: 'pointer' }}
+                >
+                  Annuler
+                </button>
+                <button 
+                  type="submit" 
+                  style={{ padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontWeight: 600, backgroundColor: 'var(--color-primary)', color: 'white', border: 'none', cursor: 'pointer', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                >
+                  Lancer le Projet
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       <div className="admin-grid admin-grid-cols-4" style={{ marginBottom: '2.5rem' }}>
         <div className="admin-card">
           <p style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.25rem' }}>Total Requests</p>
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 900 }}>{requests.length}</h3>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 900 }}>{safeRequests.length}</h3>
           <div style={{ marginTop: '0.5rem', color: 'var(--color-secondary)', fontSize: '0.75rem', fontWeight: 800, display: 'flex', alignItems: 'center' }}>
             <span className="material-symbols-outlined" style={{ fontSize: '0.875rem', marginRight: '0.25rem' }}>trending_up</span> All time
           </div>
         </div>
         <div className="admin-card">
           <p style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.25rem' }}>New Inquiries</p>
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--color-primary-container)' }}>{requests.filter(r => r.status === 'New').length}</h3>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--color-primary-container)' }}>{newRequests.length}</h3>
           <div style={{ marginTop: '0.5rem', color: 'var(--color-primary-container)', fontSize: '0.75rem', fontWeight: 800, display: 'flex', alignItems: 'center' }}>
             <span className="material-symbols-outlined" style={{ fontSize: '0.875rem', marginRight: '0.25rem' }}>schedule</span> Awaiting review
           </div>
@@ -133,9 +346,9 @@ const ProjectRequests = () => {
           <tbody>
             {isLoading ? (
               <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem' }}>Loading requests...</td></tr>
-            ) : requests.length === 0 ? (
+            ) : filteredRequests.length === 0 ? (
               <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem' }}>No requests found.</td></tr>
-            ) : requests.map((req) => (
+            ) : filteredRequests.map((req) => (
               <tr key={req.id}>
                 <td>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -207,12 +420,30 @@ const ProjectRequests = () => {
         </div>
         <div style={{ backgroundColor: 'var(--color-primary-container)', padding: '2rem', borderRadius: '1rem', color: 'white', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)' }}>
           <div>
-            <span className="material-symbols-outlined" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', display: 'block' }}>auto_awesome</span>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>AI Recommendation</h3>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', lineHeight: 1.6 }}>Prioritize the "Soil Classification" requests from Elena Kostic based on existing expert availability in the Croatian region.</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '2rem', display: 'block' }}>auto_awesome</span>
+              <span style={{ fontWeight: 800, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', backgroundColor: 'rgba(255,255,255,0.2)', padding: '0.25rem 0.5rem', borderRadius: '4px' }}>AI Recommended</span>
+            </div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>Priorité Suggérée</h3>
+            {newRequests.length > 0 ? (
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                Priorisez la demande de <strong>"{newRequests[0].name}"</strong> concernant le projet <strong>"{newRequests[0].project_type}"</strong>. 
+                Disponibilité d'experts détectée pour les dialectes locaux.
+              </p>
+            ) : (
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                Toutes les demandes ont été traitées. Le pipeline de collecte de données est optimisé pour les régions actuelles.
+              </p>
+            )}
           </div>
-          <button style={{ width: '100%', marginTop: '2rem', padding: '0.75rem', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 800, borderRadius: '0.75rem', border: 'none', cursor: 'pointer' }}>
-            Quick Assign
+          <button 
+            onClick={() => {
+              if (newRequests.length > 0) updateStatus(newRequests[0].id, 'In Review');
+            }}
+            disabled={newRequests.length === 0}
+            style={{ width: '100%', marginTop: '2rem', padding: '0.75rem', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 800, borderRadius: '0.75rem', border: 'none', cursor: 'pointer', opacity: newRequests.length === 0 ? 0.7 : 1 }}
+          >
+            {newRequests.length > 0 ? 'Review Now' : 'System Optimized'}
           </button>
         </div>
       </div>

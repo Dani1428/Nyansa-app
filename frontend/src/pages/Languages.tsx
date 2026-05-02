@@ -80,6 +80,34 @@ const Languages = () => {
           </div>
         </section>
 
+        {/* Value Section: Bento Grid */}
+        <section style={{ padding: '5rem 0', backgroundColor: 'var(--color-surface)' }}>
+          <div className="container">
+            <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+              <div style={{ backgroundColor: '#fff', padding: '2.5rem', borderRadius: '1rem', border: '1px solid var(--color-outline-variant)', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-primary)', marginBottom: '1.5rem', lineHeight: 1.2 }}>{t('languages.value.title')}</h2>
+                <p style={{ fontSize: '1.125rem', color: 'var(--color-on-surface-variant)', lineHeight: 1.625, marginBottom: '1.5rem' }}>{t('languages.value.desc')}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(107, 254, 156, 0.2)', border: '1px solid rgba(107, 254, 156, 0.3)', padding: '0.5rem 1rem', borderRadius: '999px' }}>
+                    <span className="material-symbols-outlined" style={{ color: 'var(--color-secondary)', fontSize: '1rem' }}>precision_manufacturing</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-on-secondary-container)' }}>{t('languages.value.p1')}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(107, 254, 156, 0.2)', border: '1px solid rgba(107, 254, 156, 0.3)', padding: '0.5rem 1rem', borderRadius: '999px' }}>
+                    <span className="material-symbols-outlined" style={{ color: 'var(--color-secondary)', fontSize: '1rem' }}>agriculture</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-on-secondary-container)' }}>{t('languages.value.p2')}</span>
+                  </div>
+                </div>
+              </div>
+              <div style={{ position: 'relative', minHeight: '300px', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5jPtwfJDuAk1wJpmXy821L-IWT00Z1i2Xuorvgln-qfWB7RyNZISTiqyn0Eh27EwGdCppdi65v7jqotYddWseUEbAIxfPB5BTjcvc5RdOr8xf5IpICX4RgwwyaK2ebjIrPG1r6UGNFrQZbOYfvZr98BvqVIcZ4HzWKQ3fR49NX2W7o9amTta7eq_gs1Xpi5wrPHESTNIKqeKgapGQ1ojO2pkAllYLRGWgU-OeKNQTew_kuH9b2JkoSX8Qq8t0CduXdVAjOnP0v_15" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} alt="Agri Tech" />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)', display: 'flex', alignItems: 'flex-end', padding: '2rem' }}>
+                  <p style={{ color: '#fff', fontWeight: 500, fontStyle: 'italic', fontSize: '1.125rem' }}>{t('languages.value.quote')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Language Grid Section with Filter */}
         <section style={{ padding: '8rem 0', backgroundColor: 'var(--color-surface)' }}>
           <div className="container">

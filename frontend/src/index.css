@@ -2,6 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1) rotate(5deg); }
+}
+
 :root {
   --color-primary: #00604c;
   --color-primary-container: #1f7a63;
@@ -25,6 +30,18 @@
   --font-family: 'Public Sans', sans-serif;
   
   --spacing-container: 1200px;
+}
+
+[data-theme='dark'] {
+  --color-surface: #0f172a;
+  --color-on-surface: #f1f5f9;
+  --color-on-surface-variant: #94a3b8;
+  --color-surface-container-low: #1e293b;
+  --color-surface-container-high: #334155;
+  --color-surface-container-highest: #475569;
+  --color-white: #1e293b;
+  --color-border: #334155;
+  --color-bg: #0f172a;
 }
 
 * {
@@ -115,7 +132,8 @@ ul {
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
-  padding: 0.75rem 1.5rem;
+  padding: 0 2rem;
+  height: 3rem;
   border-radius: 0.5rem;
   font-weight: 700;
   font-size: 0.875rem;
@@ -123,6 +141,9 @@ ul {
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary:hover {
@@ -137,11 +158,18 @@ ul {
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
   background: transparent;
-  padding: 0.75rem 1.5rem;
+  padding: 0 2rem;
+  height: 3rem;
   border-radius: 0.5rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-outline:hover {
+  background-color: var(--color-surface-container-low);
 }
 .btn-outline:hover {
   background-color: var(--color-surface-container-low);
@@ -294,6 +322,20 @@ ul {
 .service-card:hover {
   box-shadow: 0px 8px 30px rgba(15, 23, 42, 0.08);
 }
+
+.dataset-card {
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.dataset-card:hover {
+  box-shadow: 0px 8px 30px rgba(15, 23, 42, 0.08);
+}
+
 .service-icon-wrap {
   width: 3rem;
   height: 3rem;

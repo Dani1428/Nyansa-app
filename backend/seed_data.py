@@ -140,11 +140,66 @@ def seed_projects():
             msg.save()
     print("Successfully seeded project requests.")
 
+from datasets.models import Task
+
+def seed_tasks():
+    swahili = Language.objects.filter(name='Swahili (Kenya)').first()
+    wolof = Language.objects.filter(name='Wolof (Senegal)').first()
+    hausa = Language.objects.filter(name='Hausa (Nigeria)').first()
+
+    tasks = [
+        {
+            'title': 'Collecte Audio Swahili',
+            'description': 'Enregistrement de phrases agricoles en Swahili local pour détecter les parasites du maïs.',
+            'task_type': 'audio',
+            'language': swahili,
+            'reward_per_entry': 500.00,
+            'target_count': 1000
+        },
+        {
+            'title': 'Identification Cacao',
+            'description': 'Prendre des photos de feuilles de cacao (Saine vs Malade) pour le catalogue visuel.',
+            'task_type': 'image',
+            'language': wolof, # Assuming Wolof for this example
+            'reward_per_entry': 350.00,
+            'target_count': 500
+        },
+        {
+            'title': 'Transcription Wolof',
+            'description': 'Traduire des notes vocales courtes en texte Wolof pour les conseils agricoles.',
+            'task_type': 'text',
+            'language': wolof,
+            'reward_per_entry': 200.00,
+            'target_count': 2000
+        },
+        {
+            'title': 'Collecte Audio Hausa',
+            'description': 'Enregistrement de termes agricoles en Hausa pour les alertes météo.',
+            'task_type': 'audio',
+            'language': hausa,
+            'reward_per_entry': 500.00,
+            'target_count': 1200
+        },
+        {
+            'title': 'Mission Spéciale : Terrain',
+            'description': 'Script de collecte complet (Langue + Agriculture) pour les agents terrain.',
+            'task_type': 'audio',
+            'language': swahili,
+            'reward_per_entry': 1500.00,
+            'target_count': 50
+        }
+    ]
+
+    for data in tasks:
+        Task.objects.update_or_create(title=data['title'], defaults=data)
+    print("Successfully seeded tasks.")
+
 def seed_all():
     seed_datasets()
     seed_languages()
     seed_experts()
     seed_projects()
+    seed_tasks()
 
 if __name__ == '__main__':
     seed_all()

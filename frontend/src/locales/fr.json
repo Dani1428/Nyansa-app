@@ -4,333 +4,582 @@
     "datasets": "Datasets",
     "languages": "Langues",
     "agriculture": "Agriculture",
-    "about": "À propos",
+    "about": "À Propos",
     "contact": "Contact",
-    "get_quote": "Obtenir un devis"
+    "get_quote": "Demander un Devis"
   },
   "home": {
-    "hero": {
-      "title_main": "Données Linguistiques et Agricoles",
-      "title_highlight": "Africaines pour l'IA",
-      "desc": "Des Datasets de haute qualité dans les langues locales africaines pour le machine learning et les solutions agri-tech. Propulser les modèles mondiaux avec une précision régionale.",
-      "view_datasets": "Voir les Datasets",
-      "live_badge": "COLLECTE DE DONNÉES EN DIRECT"
-    },
-    "trust": "Approuvé par les startups de l'IA et les innovateurs de l'AgriTech",
-    "services": {
-      "title": "Services de Base",
-      "text": {
-        "title": "Annotation de Texte",
-        "desc": "Reconnaissance d'entités et analyse de sentiment pour les forums agricoles locaux et les textes spécifiques aux dialectes."
-      },
-      "audio": {
-        "title": "Annotation Audio",
-        "desc": "Transcription et étiquetage pour la parole régionale, permettant des outils de conseil agricole à commande vocale."
-      },
-      "image": {
-        "title": "Annotation d'Images",
-        "desc": "Boîtes englobantes et segmentation pour l'identification des maladies des cultures et la cartographie de la santé des plantes."
-      },
-      "dataset": {
-        "title": "Création de Datasets",
-        "desc": "Collecte personnalisée de données de terrain, adaptées à vos besoins spécifiques en IA."
-      }
-    },
-    "specialization": {
-      "title": "Spécialisé dans les Langues et l'Agriculture d'Afrique",
-      "desc": "Nous comblons le fossé linguistique avec une expertise approfondie des cultures qui stimulent les économies africaines. Nos collecteurs de données sont des agronomes et des locuteurs natifs.",
-      "dialects": "Dialectes Pris en Charge",
-      "fields": "Champs Cartographiés",
-      "regional": "Dialectes Régionaux",
-      "value_chains": "Chaînes de Valeur Clés",
-      "field_data": "Données Réelles de Terrain",
-      "field_data_desc": "Vérifié par des agronomes et des linguistes sur le terrain."
-    },
     "datasets": {
-      "title": "Datasets à la Une",
-      "desc": "Données prêtes à l'emploi pour l'ajustement des modèles.",
-      "browse_all": "Tout parcourir",
-      "view_details": "Voir les détails",
-      "language": "Langue",
       "previews": [
         {
-          "title": "Carte des Maladies du Cacao en Côte d'Ivoire",
-          "type": "Données d'Image",
-          "desc": "Plus de 15 000 images étiquetées de pourriture brune et de mirides provenant de 200 fermes ouest-africaines.",
+          "title": "Carte des maladies du cacao (Côte d'Ivoire)",
+          "type": "Données Images",
+          "desc": "15 000+ images étiquetées de la pourriture brune et des mirides provenant de 200 exploitations.",
           "lang": "FR / Dioula"
         },
         {
-          "title": "Dialectes des Marchés Ouest-Africains",
+          "title": "Dialectes des marchés ouest-africains",
           "type": "Données Audio",
-          "desc": "500 heures de négociations enregistrées sur les marchés locaux du Bénin et de la Côte d'Ivoire.",
+          "desc": "500 heures d'enregistrements de négociations dans les marchés locaux (Bénin et Côte d'Ivoire).",
           "lang": "Baoulé / Bété"
         },
         {
-          "title": "Indice Régional des Nutriments du Sol",
+          "title": "Indice régional des nutriments du sol",
           "type": "Données Tabulaires",
-          "desc": "Analyse chimique complète et historique des rendements de plus de 5 000 petits exploitants d'huile de palme.",
+          "desc": "Analyses chimiques complètes et historique des rendements de plus de 5 000 petits exploitants.",
           "lang": "Anglais / Français"
         }
-      ]
+      ],
+      "title": "Datasets à la Une",
+      "desc": "Données de terrain prêtes à l'emploi pour le fine-tuning.",
+      "browse_all": "Voir Tous les Datasets",
+      "language": "Langue",
+      "view_details": "Voir les Détails"
     },
-    "cta": {
-      "title": "Besoin de données africaines pour votre IA ?",
-      "desc": "Associez-vous à nous pour construire des solutions d'IA éthiques, précises et culturellement pertinentes pour l'avenir de l'agriculture mondiale.",
-      "start": "Commencer votre projet"
-    }
-  },
-  "languages": {
+    "specialization": {
+      "title": "Notre Spécialisation",
+      "desc": "Expertise dans les langues africaines et l'agriculture.",
+      "dialects": "Dialectes",
+      "fields": "Champs",
+      "regional": "Régional",
+      "value_chains": "Chaînes de Valeur",
+      "field_data": "Données Terrain",
+      "field_data_desc": "Données collectées directement sur le terrain."
+    },
     "hero": {
-      "badge": "Portée Mondiale",
-      "title": "Langues africaines disponibles",
-      "desc": "Combler le fossé linguistique avec des Datasets de haute précision. Nous donnons les moyens à la technologie agricole en numérisant et structurant les langues à faibles ressources pour le marché mondial."
+      "title_main": "Propulser l'IA avec",
+      "title_highlight": "les langues africaines et les données agricoles",
+      "desc": "Des Datasets annotés de haute qualité dans les langues locales africaines pour les entreprises d'IA et les solutions AgriTech.",
+      "view_datasets": "Voir les Datasets",
+      "live_badge": "Collecte en Direct"
     },
-    "diff": {
-      "title": "Langues à faibles ressources = haute valeur pour l'IA",
-      "desc": "Pour des millions d'agriculteurs à travers l'Afrique, la langue reste un obstacle à l'intelligence agricole moderne. En se concentrant sur les langues à faibles ressources, nyansa crée les Datasets fondamentaux nécessaires à des modèles d'IA inclusifs.",
-      "inclusive": "Modèles d'IA Inclusifs",
-      "prosperity": "Prospérité des Agriculteurs",
-      "quote": "\"L'inclusivité linguistique est la prochaine frontière de la souveraineté numérique dans l'agriculture mondiale.\""
-    },
-    "grid": {
-      "title": "Dialectes et régions disponibles",
-      "desc": "Explorez notre couverture linguistique actuelle. Chaque Dataset est organisé avec des linguistes locaux et des experts agricoles.",
-      "filter": "Filtrer par Région",
-      "available": "Données Disponibles",
-      "request": {
-        "title": "Demander une Langue",
-        "desc": "Vous ne voyez pas un dialecte spécifique ? Nous acceptons les demandes pour des Datasets agricoles spécifiques.",
-        "button": "Contacter notre équipe de recherche"
-      }
-    },
-    "tech": {
-      "title": "Précision Scientifique dans chaque Dialecte",
-      "desc": "Notre processus d'annotation suit les normes les plus élevées de la science linguistique. Nous ne nous contentons pas de traduire ; nous contextualisons la terminologie pour des contextes agricoles spécifiques comme la gestion des ravageurs, les techniques d'irrigation et les fluctuations du marché.",
-      "accuracy": {
-        "title": "Précision Contextuelle",
-        "desc": "Terminologie vérifiée par des agronomes locaux."
+    "trust": "Ils Nous Font Confiance",
+    "services": {
+      "title": "Nos Services de Collecte",
+      "text": {
+        "title": "Collecte de Texte",
+        "desc": "Transcriptions, traductions et génération de corpus textuels locaux.",
+        "entity": "Classification d'Entités",
+        "translation": "Couplage de Traduction Automatique",
+        "entity_example": "<0>[Culture : Sorgho]</0> présente des signes de <1>[Pathogène : Anthracnose]</1> dans la <2>[Région : Nord du Ghana]</2>.",
+        "accuracy": "Précision de 98,5 % par validation croisée sur le corpus Swahili"
       },
       "audio": {
-        "title": "Audio Haute Fidélité",
-        "desc": "Enregistrements de qualité studio pour un entraînement robuste de la reconnaissance vocale."
+        "title": "Corpus Audio",
+        "desc": "Enregistrements vocaux natifs pour l'entraînement des modèles Speech-to-Text."
+      },
+      "image": {
+        "title": "Données Visuelles",
+        "desc": "Images agricoles annotées pour la détection de maladies et le rendement."
+      },
+      "dataset": {
+        "title": "Datasets Prêts à l'Emploi",
+        "desc": "Accès API à nos bases de données qualifiées et validées par des experts."
+      }
+    },
+    "cta": {
+      "title": "Prêt à propulser votre IA ?",
+      "desc": "Rejoignez les leaders mondiaux de l'AgriTech qui utilisent nos données de haute qualité.",
+      "start": "Démarrer un Projet"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 Nyansa AI. Tous droits réservés.",
+    "company": "Entreprise",
+    "legal": "Légal",
+    "support": "Support"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "last_updated": "Dernière Mise à Jour : Avril 2026",
+    "intro": "Cette politique décrit comment Nyansa AI collecte, utilise et protège vos données personnelles dans le respect du RGPD et des réglementations locales applicables.",
+    "sections": {
+      "data_collection": {
+        "title": "Collecte de Données",
+        "content": "Nous collectons uniquement les données nécessaires à la fourniture de nos services d'annotation et de création de datasets. Ces données comprennent :",
+        "items": {
+          "1": "Données d'identification (nom, email) pour la gestion des comptes utilisateurs et contributeurs.",
+          "2": "Données de localisation GPS collectées uniquement lors des missions de terrain actives, avec consentement explicite.",
+          "3": "Contenus soumis (audio, images, textes) dans le cadre des missions de collecte de données agricoles."
+        }
+      },
+      "rights": {
+        "title": "Vos Droits",
+        "content": "Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :",
+        "items": {
+          "1": {
+            "title": "Droit d'accès",
+            "desc": "Vous pouvez demander à tout moment une copie de vos données personnelles détenues par Nyansa AI."
+          },
+          "2": {
+            "title": "Droit de rectification",
+            "desc": "Vous pouvez corriger toute donnée inexacte ou incomplète vous concernant."
+          },
+          "3": {
+            "title": "Droit à l'effacement",
+            "desc": "Vous pouvez demander la suppression de vos données sous certaines conditions légales."
+          },
+          "4": {
+            "title": "Droit à la portabilité",
+            "desc": "Vous pouvez recevoir vos données dans un format structuré et lisible par machine."
+          },
+          "5": {
+            "title": "Droit d'opposition",
+            "desc": "Vous pouvez vous opposer au traitement de vos données à des fins de marketing ou de profilage."
+          }
+        }
+      },
+      "legal_basis": {
+        "title": "Base Légale du Traitement",
+        "content": "Le traitement de vos données repose sur votre consentement explicite, l'exécution d'un contrat de service ou le respect d'obligations légales applicables. Vous pouvez retirer votre consentement à tout moment sans que cela n'affecte la licéité du traitement antérieur."
+      },
+      "retention": {
+        "title": "Conservation des Données",
+        "content": "Vos données sont conservées uniquement pendant la durée nécessaire à l'accomplissement des finalités pour lesquelles elles ont été collectées. Les données des contributeurs actifs sont conservées 3 ans après la dernière activité. Les données anonymisées à des fins de recherche peuvent être conservées indéfiniment."
+      },
+      "contact": {
+        "title": "Contacter notre Délégué à la Protection des Données",
+        "content": "Pour toute question relative à la protection de vos données ou pour exercer vos droits, contactez notre équipe DPO :"
       }
     }
   },
-  "services": {
-    "header": {
-      "badge": "Science des Données de Précision",
-      "title": "Services Spécialisés pour l'Agronomie Mondiale.",
-      "desc": "Combler le fossé entre la diversité linguistique et la productivité agricole grâce à l'annotation de données haute fidélité et à la conservation de Datasets personnalisés."
+  "admin": {
+    "common": {
+      "notifications": "Notifications",
+      "close": "Fermer",
+      "add_new": "Ajouter",
+      "export": "Exporter CSV",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "actions": "Actions",
+      "loading": "Chargement..."
     },
-    "text": {
-      "title": "Annotation de Texte",
-      "desc": "Étiquetage de précision pour les dialectes agricoles à faibles ressources et la terminologie technique. Nous transformons les notes de terrain brutes et les rapports d'agronomes en données d'entraînement structurées.",
-      "entity": "Classification d'Entités",
-      "translation": "Traduction Multilingue",
-      "accuracy": "98,4 % d'accord entre annotateurs sur la nomenclature technique."
+    "settings": {
+      "desc": "Gérer les paramètres et les clés API.",
+      "tabs": {
+        "general": "Général",
+        "preferences": "Préférences",
+        "security": "Sécurité"
+      },
+      "preferences": {
+        "title": "Préférences d'Affichage",
+        "language": "Langue du Tableau de Bord",
+        "theme": "Thème de l'Interface",
+        "dark": "Sombre",
+        "light": "Clair",
+        "save": "Enregistrer les Préférences",
+        "saving": "Enregistrement...",
+        "save_success": "Paramètres enregistrés avec succès !"
+      },
+      "api": {
+        "title": "Clés API",
+        "generate": "Générer une Clé",
+        "desc": "Utilisez ces clés pour authentifier vos pipelines de données ou vos validateurs externes avec l'écosystème Nyansa AI.",
+        "no_keys": "Aucune clé API active. Générez-en une pour commencer.",
+        "created": "Créée le",
+        "revoke": "Révoquer",
+        "revoke_confirm": "Êtes-vous sûr de vouloir révoquer cette clé ? Elle ne pourra plus être utilisée.",
+        "name_prompt": "Entrez un nom pour cette clé (ex: Pipeline Production) :",
+        "security_note": "Note de sécurité : Ne partagez jamais vos clés secrètes dans des dépôts de code publics.",
+        "success_title": "Clé API Générée !",
+        "success_desc": "Veuillez copier cette clé maintenant. Pour votre sécurité, elle ne sera plus jamais affichée."
+      }
     },
-    "audio": {
-      "title": "Annotation Audio",
-      "desc": "Capturer la voix humaine de l'agriculture. Nous sommes spécialisés dans la transcription et l'annotation des journaux vocaux des agriculteurs ruraux pour les systèmes de conseil automatisés.",
-      "f1": "Transcription phonétique respectueuse des dialectes pour les schémas de parole régionaux.",
-      "f2": "Analyse de sentiment pour détecter les détresses critiques dans les messages ruraux.",
-      "f3": "Diarisation du locuteur pour les conversations de conseil multi-agents.",
-      "stream": "Flux d'Entrée Agriculteur #804"
+    "missions": {
+      "title": "Missions",
+      "desc": "Gérer les missions de collecte de données."
     },
-    "image": {
-      "title": "Annotation d'Images",
-      "desc": "Entraînement de la vision par ordinateur pour la détection des ravageurs au niveau du champ, la surveillance de la santé des cultures et la classification de l'utilisation des terres par satellite.",
-      "box": "Boîtes Englobantes",
-      "box_desc": "Détection d'objets pour les ravageurs et les maladies.",
-      "seg": "Segmentation",
-      "seg_desc": "Cartographie précise des feuilles au niveau du pixel."
+    "sidebar": {
+      "dashboard": "Tableau de Bord",
+      "validation": "Validation",
+      "missions": "Missions",
+      "agents": "Agents",
+      "projects": "Projets",
+      "datasets": "Datasets",
+      "languages": "Langues & Experts",
+      "payments": "Paiements",
+      "settings": "Paramètres",
+      "new_project": "Nouveau Projet"
     },
-    "pipeline": {
-      "title": "Le Pipeline de Données",
-      "desc": "De la récolte des données brutes aux Datasets prêts pour le ML de classe entreprise. Notre processus d'ingénierie linguistique de bout en bout.",
-      "s1_t": "Collecte",
-      "s1_d": "Sourcing de données de terrain authentiques auprès de plus de 40 partenaires ruraux.",
-      "s2_t": "Annotation",
-      "s2_d": "Vérification par des experts linguistiques et marquage sémantique.",
-      "s3_t": "QA",
-      "s3_d": "Validation à trois niveaux pour la précision scientifique et linguistique.",
-      "s4_t": "Livraison",
-      "s4_d": "Datasets JSON/CSV prêts pour l'API avec métadonnées complètes."
+    "dashboard": {
+      "title": "Vue d'ensemble du Tableau de Bord",
+      "desc": "Mesures de performance en temps réel pour le traitement linguistique agricole mondial.",
+      "total_datasets": "Total Datasets",
+      "active_projects": "Projets Actifs",
+      "total_experts": "Total Experts",
+      "accuracy": "Précision de Traduction",
+      "trends": "Tendances des Projets",
+      "trends_desc": "Volume des demandes d'analyse linguistique entrantes",
+      "system_status": "Statut du Système",
+      "engine_core": "Cœur du Moteur Linguistique",
+      "operational": "Tous les nœuds sont opérationnels",
+      "throughput": "Débit"
     },
-    "cta": {
-      "title": "Prêt à construire l'intelligence agricole ?",
-      "btn1": "Demander un Dataset",
-      "btn2": "Parler à un Data Scientist"
+    "agents": {
+      "title": "Gestion de la Réputation",
+      "desc": "Surveillance de la qualité, détection de fraude et gestion des accès.",
+      "total": "Total Agents",
+      "suspended": "Suspendus",
+      "avg_score": "Score Moyen",
+      "fraud_alerts": "Alertes Fraude",
+      "table": {
+        "agent": "Agent / Utilisateur",
+        "device": "Appareil / Réseau",
+        "status": "Statut",
+        "quality": "Qualité",
+        "location": "Localisation",
+        "balance": "Solde",
+        "actions": "Actions",
+        "reactivate": "Réactiver",
+        "suspend": "Suspendre",
+        "view_map": "Voir Map",
+        "not_localized": "Non localisé"
+      }
+    },
+    "languages": {
+      "title": "Langues & Experts",
+      "desc": "Gérez les Datasets linguistiques et coordonnez les annotateurs spécialisés.",
+      "active_dialects": "Dialectes Actifs",
+      "experts": {
+        "title": "Experts Linguistiques & Annotateurs",
+        "desc": "Répertoire des spécialistes certifiés du domaine agricole.",
+        "invite": "Inviter un Expert",
+        "table": {
+          "expert": "Expert",
+          "specialization": "Spécialisation",
+          "languages": "Langue(s)",
+          "status": "Statut"
+        },
+        "change_status": "Changer le Statut"
+      },
+      "pipeline": {
+        "title": "Pipeline de Traduction",
+        "desc": "Précision actuelle du modèle sur tous les dialectes locaux activés."
+      }
     }
   },
-  "datasets": {
-    "title": "Catalogue de Datasets",
-    "desc": "Accédez à des Datasets linguistiques et agricoles organisés pour l'entraînement de modèles d'IA de haute précision. Nos données sont sourcées de manière éthique et vérifiées par des experts du domaine.",
-    "loading": "Chargement du catalogue...",
-    "filters": {
-      "lang": "Langue",
-      "type": "Type",
-      "sector": "Secteur"
+  "about": {
+    "ground_truth_val": "10k+",
+    "ground_truth_lbl": "Échantillons de Vérité Terrain",
+    "header": {
+      "title": "Nous construisons les données qui permettent à l’IA de comprendre les langues africaines pour l’agriculture.",
+      "desc": "Chez NYANSA, nous transformons les langues locales africaines en données intelligentes pour entraîner l’intelligence artificielle. Notre objectif : rendre les technologies agricoles accessibles à tous, même dans les zones rurales et multilingues."
     },
-    "card": {
-      "request": "Demander le Dataset"
+    "mission": {
+      "title": "Notre Mission",
+      "desc": "Rendre l’intelligence agricole accessible en collectant, structurant et annotant les langues africaines sous forme de données exploitables par l’IA."
     },
-    "banner": {
-      "title": "Vous ne voyez pas ce dont vous avez besoin ?",
-      "desc": "Nous proposons des services personnalisés de collecte et d'annotation de données pour des dialectes régionaux spécifiques.",
-      "btn": "Consulter un Expert"
+    "vision": {
+      "title": "Notre Vision",
+      "desc": "Un monde où chaque agriculteur peut utiliser des outils d’intelligence artificielle dans sa propre langue pour améliorer sa production, ses revenus et sa résilience."
+    },
+    "stats": {
+      "badge": "Notre Impact",
+      "title": "Construire l’infrastructure linguistique de l’IA en Afrique",
+      "s1_v": "1.2M+",
+      "s1_t": "Données annotées",
+      "s1_d": "Données audio et visuelles utilisées pour entraîner des modèles d’IA agricoles",
+      "s2_v": "12+",
+      "s2_t": "Langues et dialectes",
+      "s2_d": "Représentant la diversité linguistique des zones agricoles",
+      "s3_v": "500+",
+      "s3_t": "Contributeurs & experts",
+      "s3_d": "Annotateurs, agriculteurs et linguistes validant les données"
     }
   },
   "agriculture": {
+    "ecosystem": {
+      "crops": [
+        {
+          "tag": "Culture Premium",
+          "title": "Cacao",
+          "desc": "Datasets intégrés pour la détection du Moniliophthora roreri et support vocal localisé en Swahili/Akan pour les agriculteurs."
+        },
+        {
+          "tag": "Industriel",
+          "title": "Hévéa",
+          "desc": "Analyse du flux de latex d'hévéa et surveillance des infections fongiques à l'aide d'imagerie de haute précision fournie par des experts."
+        },
+        {
+          "tag": "Atout Vital",
+          "title": "Palmier",
+          "desc": "Références d'agriculture durable et prédictions des cycles de récolte sur des points de données climatiques multirégionaux."
+        }
+      ],
+      "badge": "Écosystème Principal",
+      "title": "Cultures Intégrées dans Notre Graphe de Connaissances.",
+      "desc": "Nos modèles d'IA sont spécifiquement formés sur des cultures pérennes et industrielles à haute valeur ajoutée, essentielles à la sécurité alimentaire mondiale."
+    },
     "hero": {
       "badge": "Agronomie de Précision",
       "title": "Intelligence Linguistique pour une Croissance Durable.",
-      "desc": "Combler le fossé entre le travail de terrain agricole et la science des données grâce à des Datasets d'IA multimodaux et des modèles linguistiques localisés.",
+      "desc": "Combler le fossé entre le travail agricole sur le terrain et la science des données grâce à des Datasets d'IA multimodaux et des modèles linguistiques localisés.",
       "btn1": "Explorer les Datasets",
       "btn2": "Voir la Démo",
       "diag": "Diagnostics en Direct",
-      "opt": "Optimisation du Rendement du Cacao",
+      "opt": "Optimisation du Rendement Cacao",
       "model": "Modèle Linguistique",
       "voices": "Voix de Terrain Annotées"
-    },
-    "ecosystem": {
-      "badge": "Écosystème de Base",
-      "title": "Cultures Intégrées dans notre Graphe de Connaissances.",
-      "desc": "Nos modèles d'IA sont spécifiquement entraînés sur des cultures pérennes et industrielles à haute valeur, essentielles à la sécurité alimentaire mondiale.",
-      "crops": [
-        {
-          "title": "Cacao",
-          "tag": "Culture Premium",
-          "desc": "Datasets intégrés pour la détection de Moniliophthora roreri et support vocal localisé en Swahili/Akan pour les agriculteurs."
-        },
-        {
-          "title": "Hévéa",
-          "tag": "Industriel",
-          "desc": "Analyse du flux de latex de l'hévéa et surveillance des infections fongiques à l'aide d'imagerie de haute précision."
-        },
-        {
-          "title": "Palmier à Huile",
-          "tag": "Atout Vital",
-          "desc": "Bénéfices de l'agriculture durable et prédictions du cycle de récolte à travers des points de données climatiques multi-régionaux."
-        }
-      ]
     },
     "bento": {
       "badge": "Intelligence de Précision",
       "title": "Données Linguistiques Multimodales.",
       "image_t": "Images Annotées",
-      "image_d": "Imagerie de terrain haute résolution avec segmentation experte pour l'identification des ravageurs, des maladies et des carences nutritionnelles. Validé par des agronomes certifiés dans 12 zones climatiques.",
+      "image_d": "Imagerie de terrain haute résolution avec segmentation experte pour l'identification des ravageurs, maladies et carences nutritionnelles. Validé par des agronomes certifiés dans 12 zones climatiques.",
       "voices_t": "Voix de Terrain",
-      "voices_d": "Datasets de parole naturelle dans les dialectes régionaux pour les outils de voix-à-l'action hors ligne.",
-      "diag_t": "Texte de Diagnostic",
-      "diag_d": "Analyse sémantique des rapports d'experts et des journaux de commentaires des agriculteurs localisés."
+      "voices_d": "Datasets de voix naturelles dans les dialectes régionaux pour des outils vocaux hors ligne.",
+      "diag_t": "Texte Diagnostique",
+      "diag_d": "Analyse sémantique de rapports d'experts et de journaux de retours d'agriculteurs localisés."
     },
     "impact": {
       "badge": "Impact Réel",
-      "title": "Transformer les Données de Terrain en Décisions Concrètes.",
-      "c1_t": "Détection des Maladies",
-      "c1_d": "Identification instantanée des menaces phytosanitaires grâce à la vision par ordinateur optimisée pour les environnements à faible bande passante.",
+      "title": "Transformer les Données de Terrain en Décisions Actionnables.",
+      "c1_t": "Détection de Maladies",
+      "c1_d": "Identification instantanée des menaces phytosanitaires par vision par ordinateur optimisée pour les environnements à faible bande passante. Réduisez les pertes de récoltes jusqu'à 40 % par une intervention précoce.",
       "c2_t": "Assistant Vocal",
-      "c2_d": "Conseils agricoles interactifs délivrés dans les dialectes locaux, permettant aux agriculteurs non alphabétisés d'accéder à l'expertise agronomique mondiale.",
+      "c2_d": "Conseils agricoles interactifs dispensés dans les dialectes locaux, permettant aux agriculteurs non alphabétisés d'accéder à l'expertise agronomique mondiale via des commandes vocales.",
       "c3_t": "Prédiction de Rendement",
-      "c3_d": "Modélisation prédictive pilotée par l'IA pour les volumes de récolte et les grades de qualité, aidant les coopératives et les exportateurs à gérer les chaînes d'approvisionnement."
-    }
-  },
-  "about": {
-    "header": {
-      "title": "Faire le Pont entre l'Agriculture et la Linguistique.",
-      "desc": "Fondé en Côte d'Ivoire, nyansa se consacre à la construction des Datasets fondamentaux nécessaires pour faire fonctionner l'IA pour les agriculteurs africains."
-    },
-    "mission": {
-      "title": "Notre Mission",
-      "desc": "Soutenir l'innovation agricole en Afrique en fournissant des Datasets haute fidélité, culturellement pertinents et scientifiquement précis dans les langues locales."
-    },
-    "vision": {
-      "title": "Notre Vision",
-      "desc": "Devenir le principal dépôt de données linguistiques et agricoles africaines, permettant une nouvelle génération d'outils d'IA qui parlent la langue de l'agriculteur."
-    },
-    "stats": {
-      "badge": "Pourquoi l'Afrique ?",
-      "title": "L'Avenir de la Sécurité Alimentaire Mondiale.",
-      "s1_t": "Population Jeune",
-      "s1_d": "60 % de la population africaine a moins de 25 ans, stimulant l'adoption des technologies.",
-      "s2_t": "Terres Arables",
-      "s2_d": "60 % des terres arables non cultivées restantes dans le monde se trouvent en Afrique.",
-      "s3_t": "Diversité Linguistique",
-      "s3_d": "Plus de 2 000 langues distinctes, offrant une frontière de données massive."
+      "c3_d": "Modélisation prédictive des volumes de récolte et des niveaux de qualité pilotée par l'IA, aidant les coopératives et les exportateurs à gérer efficacement la logistique de la chaîne d'approvisionnement."
     }
   },
   "contact": {
-    "header": {
-      "badge": "Contacter notre équipe",
-      "title": "Développons ensemble vos capacités de données.",
-      "desc": "Connecter l'agriculture de précision aux modèles linguistiques avancés. Contactez-nous pour discuter de la conservation des Datasets, de la modélisation linguistique ou des partenariats de recherche sur le terrain."
-    },
     "form": {
+      "success": "Message envoyé avec succès !",
+      "error": "Erreur lors de l'envoi.",
+      "server_error": "Erreur serveur. Veuillez réessayer.",
       "title": "Demande de Projet",
       "name": "Nom",
-      "email": "E-mail",
+      "email": "Email",
       "company": "Entreprise",
       "type": "Type de Projet",
       "message": "Message",
-      "submit": "Envoyer la Demande",
-      "success": "Merci ! Votre message a été envoyé avec succès.",
-      "error": "Une erreur est survenue. Veuillez réessayer.",
-      "server_error": "Impossible de contacter le serveur."
+      "submit": "Envoyer la Demande"
+    },
+    "header": {
+      "badge": "Contacter Notre Équipe",
+      "title": "Développons ensemble vos capacités de données.",
+      "desc": "Connecter l'agriculture de précision avec des modèles linguistiques avancés. Contactez-nous pour discuter de la création de Datasets, de la modélisation linguistique ou de partenariats de recherche sur le terrain."
     },
     "info": {
       "whatsapp": "Discuter sur WhatsApp",
       "whatsapp_d": "Support et demandes instantanés",
-      "email_t": "Adresse E-mail",
+      "email_t": "Adresse Email",
       "hq_t": "Siège Mondial",
       "hq_desc": "Cocody, Abidjan, Côte d'Ivoire",
       "hub_t": "Hub d'Abidjan",
       "hub_d": "Stratégiquement situé au cœur du commerce agricole de l'Afrique de l'Ouest."
     }
   },
-  "privacy": {
-    "title": "Politique de Confidentialité & RGPD",
-    "last_updated": "Dernière mise à jour : Avril 2024",
-    "intro": "Conformément au Règlement Général sur la Protection des Données (RGPD), nyansa s'engage à garantir la sécurité et la confidentialité de vos données personnelles.",
-    "sections": {
-      "data_collection": {
-        "title": "1. Collecte des Données",
-        "content": "Nous collectons uniquement les données strictement nécessaires aux finalités suivantes :",
-        "items": {
-          "1": "Gestion des demandes de projets et de devis.",
-          "2": "Collecte de données linguistiques pour l'entraînement de l'IA (avec consentement).",
-          "3": "Amélioration de l'expérience utilisateur sur notre plateforme."
-        }
+  "datasets": {
+    "title": "Catalogue de Datasets",
+    "desc": "Accédez à des Datasets linguistiques et agricoles sélectionnés pour l'entraînement de modèles d'IA de haute précision. Nos données sont sourcées de manière éthique et vérifiées par des experts du domaine.",
+    "explorer": {
+      "title": "Aperçu Interactif des Datasets",
+      "desc": "Découvrez la qualité et la précision de nos données. Activez les annotations IA ou écoutez des dialectes agricoles natifs.",
+      "tabs": {
+        "audio": "Échantillon Audio",
+        "vision": "Vision par Ordinateur"
       },
-      "legal_basis": {
-        "title": "2. Base Légale du Traitement",
-        "content": "Le traitement de vos données est fondé sur votre consentement explicite, l'exécution d'un contrat ou l'intérêt légitime de nyansa à améliorer ses services agricoles."
+      "audio_panel": {
+        "lang": "Langue : Swahili",
+        "topic": "Sujet : Maladie des cultures",
+        "transcript": "Transcription (Swahili)",
+        "transcript_text": "Majani ya mahindi yana matangamoto ya manjano na yanaanza kukauka.",
+        "translation": "Traduction Française",
+        "translation_text": "Les feuilles de maïs présentent des taches jaunes et commencent à sécher."
       },
-      "rights": {
-        "title": "3. Vos Droits (RGPD)",
-        "content": "En tant qu'utilisateur, vous disposez de droits étendus sur vos données personnelles :",
-        "items": {
-          "1": { "title": "Droit d'accès", "desc": "Obtenir une copie de vos données personnelles détenues par nos services." },
-          "2": { "title": "Droit de rectification", "desc": "Demander la correction de données inexactes ou incomplètes." },
-          "3": { "title": "Droit à l'effacement", "desc": "Demander la suppression de vos données ('droit à l'oubli')." },
-          "4": { "title": "Droit à la portabilité", "desc": "Recevoir vos données dans un format structuré et lisible." },
-          "5": { "title": "Droit d'opposition", "desc": "Vous opposer au traitement de vos données pour des motifs légitimes." }
-        }
+      "vision_panel": {
+        "crop": "Culture : Cacao",
+        "disease": "Détecté : Pourriture Brune",
+        "toggle_ai": "Afficher Annotations IA"
+      }
+    },
+    "filters": {
+      "lang": "Langue",
+      "type": "Type",
+      "sector": "Secteur"
+    },
+    "loading": "Chargement...",
+    "card": {
+      "request": "Demander le Dataset"
+    },
+    "banner": {
+      "title": "Vous ne trouvez pas ce dont vous avez besoin ?",
+      "desc": "Nous proposons des services de collecte et d'annotation de données sur mesure pour des dialectes régionaux spécifiques.",
+      "btn": "Consulter un Expert"
+    }
+  },
+  "languages": {
+    "hero": {
+      "badge": "PORTÉE MONDIALE",
+      "title": "Langues Africaines Supportées",
+      "desc": "Combler le fossé linguistique avec des Datasets de haute précision. Nous renforçons la technologie agricole en numérisant et en structurant les langues peu dotées pour le marché mondial."
+    },
+    "value": {
+      "title": "Les langues peu documentées=une mine de valeur pour l’IA",
+      "desc": "Pour des millions d'agriculteurs à travers l'Afrique, la langue reste un obstacle à l'intelligence agricole moderne. En se concentrant sur les langues peu dotées, AgriLingua AI crée les Datasets fondamentaux nécessaires aux modèles d'IA inclusifs.",
+      "p1": "Modèles d'IA Inclusifs",
+      "p2": "Prospérité des Agriculteurs",
+      "quote": "\"L'inclusivité linguistique est la prochaine frontière de la souveraineté numérique dans l'agriculture mondiale.\""
+    },
+    "grid": {
+      "title": "Dialectes & Régions Supportés",
+      "desc": "Explorez notre couverture linguistique actuelle. Chaque jeu de données est organisé avec des linguistes locaux et des experts agricoles.",
+      "available": "Données Disponibles",
+      "request": {
+        "title": "Demander une Langue",
+        "desc": "Vous ne voyez pas un dialecte spécifique ? Nous prenons les demandes pour des Datasets agricoles spécifiques.",
+        "button": "Contacter notre équipe de recherche"
+      }
+    },
+    "tech": {
+      "title": "Précision Scientifique dans Chaque Dialecte",
+      "desc": "Notre processus d'annotation suit les normes les plus strictes de la science linguistique. Nous ne nous contentons pas de traduire ; nous contextualisons la terminologie pour des contextes agricoles spécifiques comme la gestion des parasites, les techniques d'irrigation et les fluctuations du marché.",
+      "accuracy": {
+        "title": "Précision Contextuelle",
+        "desc": "Terminologie vérifiée par des agronomes locaux."
       },
-      "retention": {
-        "title": "4. Conservation des Données",
-        "content": "Vos données personnelles sont conservées uniquement pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées, conformément aux recommandations de la CNIL."
-      },
-      "contact": {
-        "title": "Délégué à la Protection des Données (DPO)",
-        "content": "Pour exercer vos droits ou pour toute question relative à la protection de vos données, contactez notre DPO :"
+      "audio": {
+        "title": "Audio Haute Fidélité",
+        "desc": "Enregistrements de qualité studio pour un entraînement robuste de la parole au texte."
       }
     }
   },
-  "footer": {
-    "company": "Entreprise",
-    "legal": "Légal",
-    "support": "Support",
-    "copyright": "© 2024 nyansa. Faire le pont entre l'agriculture et la linguistique."
+  "services": {
+    "header": {
+      "badge": "Science des Données de Précision",
+      "title": "Des Services Spécialisés pour l'Agronomie Mondiale.",
+      "desc": "Combler le fossé entre la diversité linguistique et la productivité agricole grâce à l'annotation de données haute fidélité et la création de Datasets sur mesure."
+    },
+    "text": {
+      "title": "Annotation de Texte",
+      "desc": "Étiquetage de précision pour les dialectes agricoles peu dotés et la terminologie technique. Nous transformons les notes de terrain brutes et les rapports d'agronomes en données d'entraînement structurées.",
+      "entity": "Classification d'Entités",
+      "translation": "Traduction Multilingue",
+      "entity_example": "<0>[Culture : Sorgho]</0> présente des signes de <1>[Pathogène : Anthracnose]</1> dans la <2>[Région : Nord du Ghana]</2>.",
+      "accuracy": "98,4% d'accord inter-annotateurs sur la nomenclature technique."
+    },
+    "audio": {
+      "stream": "Flux Audio Agriculteur #804",
+      "title": "Annotation Audio",
+      "desc": "Capturer la voix humaine de l'agriculture. Nous sommes spécialisés dans la transcription et l'annotation de journaux vocaux d'agriculteurs ruraux pour les systèmes de conseil automatisés.",
+      "f1": "Transcription phonétique sensible aux dialectes pour les modèles de parole régionaux.",
+      "f2": "Analyse des sentiments pour détecter les détresses critiques dans les messages ruraux.",
+      "f3": "Diarisation des locuteurs pour les conversations de conseil multi-agents."
+    },
+    "image": {
+      "title": "Annotation d'Image",
+      "desc": "Entraînement de la vision par ordinateur pour la détection des parasites sur le terrain, le suivi de la santé des cultures et la classification de l'utilisation des terres par satellite.",
+      "box": "Boîtes Englobantes",
+      "box_desc": "Détection d'objets pour les parasites et maladies.",
+      "seg": "Segmentation",
+      "seg_desc": "Cartographie précise des feuilles au niveau du pixel."
+    },
+    "pipeline": {
+      "title": "Le Pipeline de Données",
+      "desc": "De la récolte des données brutes aux Datasets prêts pour le ML d'entreprise. Notre processus d'ingénierie linguistique de bout en bout.",
+      "s1_t": "Collecte",
+      "s1_d": "Sourcing de données de terrain authentiques auprès de 40+ partenaires locaux.",
+      "s2_t": "Annotation",
+      "s2_d": "Vérification par des experts linguistes et balisage sémantique.",
+      "s3_t": "AQ",
+      "s3_d": "Validation à trois niveaux pour la précision scientifique et linguistique.",
+      "s4_t": "Livraison",
+      "s4_d": "Datasets JSON/CSV prêts pour API avec métadonnées complètes."
+    },
+    "cta": {
+      "title": "Prêt à construire l'intelligence agricole ?",
+      "btn1": "Demander un Dataset Sur Mesure",
+      "btn2": "Parler à un Data Scientist"
+    }
+  },
+  "legal": {
+    "badge": "Document Officiel · Avril 2026",
+    "meta_title": "Mentions Légales | Nyansa AI",
+    "meta_desc": "Mentions légales pour la plateforme Nyansa AI — éditeur, hébergement, propriété intellectuelle.",
+    "title": "Mentions Légales",
+    "intro": "Conformément aux dispositions légales applicables, voici les informations légales relatives à la plateforme Nyansa AI.",
+    "contact_section": "Nous Contacter",
+    "contact_desc": "Pour toute question concernant ces mentions légales :",
+    "s1_title": "1. Éditeur du Site",
+    "s1_p": "Le site web Nyansa AI et toutes les applications associées (API, application mobile) sont édités par :",
+    "s1_name": "Nom",
+    "s1_legal": "Forme juridique",
+    "s1_legal_v": "Startup technologique — Intelligence Artificielle Agricole",
+    "s1_hq": "Siège social",
+    "s1_hq_v": "Cocody, Abidjan, Côte d'Ivoire",
+    "s1_director": "Directeur de la publication",
+    "s1_email": "Email",
+    "s1_phone": "Téléphone",
+    "s2_title": "2. Hébergement",
+    "s2_p1": "La plateforme Nyansa AI est hébergée sur une infrastructure cloud sécurisée, opérant en conformité avec les normes internationales de sécurité des données (ISO 27001). Les serveurs sont déployés en Europe et en Afrique pour garantir des performances optimales pour nos utilisateurs.",
+    "s2_p2": "Pour toute demande urgente relative à l'infrastructure technique ou à la sécurité du système, veuillez contacter notre équipe à :",
+    "s3_title": "3. Propriété Intellectuelle",
+    "s3_p1": "L'ensemble du contenu de la plateforme Nyansa AI — y compris, sans s'y limiter, les textes, interfaces, bases de données linguistiques, jeux de données agricoles, logiciels, code source, marques, logos et noms commerciaux — est la propriété exclusive de Nyansa AI ou de ses partenaires dûment autorisés.",
+    "s3_p2": "Ces éléments sont protégés par les lois ivoriennes et internationales relatives à la propriété intellectuelle et au droit d'auteur. Toute reproduction, modification, publication ou exploitation, en tout ou en partie, sans autorisation écrite préalable est strictement interdite et constitue une violation pouvant engager des poursuites judiciaires.",
+    "s4_title": "4. Protection des Données Personnelles",
+    "s4_p": "Nyansa AI traite les données personnelles en stricte conformité avec le Règlement Général sur la Protection des Données (RGPD - UE 2016/679) et la législation ivoirienne applicable. Pour exercer vos droits ou obtenir des informations sur le traitement des données, consultez notre Politique de Confidentialité ou contactez notre Délégué à la Protection des Données.",
+    "s5_title": "5. Cookies et Traceurs",
+    "s5_p": "La plateforme utilise uniquement les cookies techniquement nécessaires au bon fonctionnement du service (gestion de session, authentification JWT). Ces cookies ne nécessitent pas de consentement préalable. Aucun cookie de suivi publicitaire n'est placé sans votre accord explicite.",
+    "s6_title": "6. Limitation de Responsabilité",
+    "s6_p1": "Nyansa AI s'efforce de garantir l'exactitude et l'actualité des informations publiées. Cependant, nous ne pouvons pas garantir leur exhaustivité en tout temps. Nyansa AI ne peut être tenu responsable des dommages directs ou indirects résultant de l'utilisation de la plateforme, de l'indisponibilité temporaire du service, ou de l'interprétation des données proposées.",
+    "s6_p2": "Les liens vers des sites tiers sur notre plateforme n'engagent pas la responsabilité de Nyansa AI pour le contenu de ces sites externes.",
+    "s7_title": "7. Droit Applicable et Juridiction",
+    "s7_p": "Les présentes mentions légales sont régies par le droit ivorien. En cas de litige et à défaut de résolution amiable dans un délai de 30 jours, les tribunaux compétents d'Abidjan (Côte d'Ivoire) auront juridiction exclusive."
+  },
+  "terms": {
+    "badge": "Document Officiel · Avril 2026",
+    "meta_title": "Conditions Générales d'Utilisation | Nyansa AI",
+    "meta_desc": "Conditions générales d'utilisation de la plateforme Nyansa AI.",
+    "title": "Conditions Générales d'Utilisation",
+    "intro": "En accédant et en utilisant la plateforme Nyansa AI — que ce soit l'application web, l'API ou l'application mobile de collecte sur le terrain — vous acceptez sans réserve ces conditions générales d'utilisation.",
+    "contact_section": "Questions ?",
+    "contact_desc": "Pour toute question concernant ces conditions générales d'utilisation :",
+    "s1_title": "1. Objet et Champ d'Application",
+    "s1_p1": "Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès, la navigation et l'utilisation de tous les services proposés par Nyansa AI, notamment :",
+    "s1_i1": "La plateforme web pour la gestion et la consultation des datasets agricoles.",
+    "s1_i2": "L'API REST pour l'accès programmatique aux données linguistiques et agricoles.",
+    "s1_i3": "L'application mobile Flutter dédiée à la collecte de données sur le terrain.",
+    "s1_i4": "Le panneau d'administration pour les équipes de validation et de gestion de projets.",
+    "s1_p2": "Ces CGU s'appliquent à tous les utilisateurs : clients entreprise, contributeurs de terrain (agents), experts linguistiques et visiteurs du site public.",
+    "s2_title": "2. Création de Compte et Accès",
+    "s2_p": "L'accès à certaines fonctionnalités de la plateforme nécessite la création d'un compte utilisateur. En vous inscrivant, vous acceptez de :",
+    "s2_i1": "Fournir des informations d'identité exactes, complètes et à jour lors de l'inscription.",
+    "s2_i2": "Maintenir la confidentialité de vos identifiants de connexion et mot de passe.",
+    "s2_i3": "Signaler immédiatement à Nyansa AI tout accès non autorisé ou compromission de votre compte.",
+    "s2_i4": "Être responsable de toutes les actions effectuées depuis votre compte, autorisées ou non.",
+    "s2_p2": "Nyansa AI se réserve le droit de refuser la création d'un compte ou de suspendre un compte existant sans justification préalable.",
+    "s3_title": "3. Utilisation des Services de Collecte",
+    "s3_p": "Les agents de terrain utilisant l'application mobile pour soumettre des données (audio, images, textes) acceptent de :",
+    "s3_i1": "Collecter uniquement des données authentiques, dans la zone géographique indiquée par la mission.",
+    "s3_i2": "Garantir la qualité technique des enregistrements (clarté audio, netteté image, lisibilité texte).",
+    "s3_i3": "Garantir le consentement des personnes potentiellement enregistrées dans les données.",
+    "s3_i4": "Ne soumettre aucune données qui attente à la dignité humaine, à la vie privée ou aux droits de tiers.",
+    "s4_title": "4. Rémunération des Contributeurs",
+    "s4_p1": "Les agents de terrain sont rémunérés en FCFA par entrée validée, selon les taux affichés pour chaque mission sur l'application mobile. La validation est effectuée automatiquement par notre système d'assurance qualité, complétée par une revue humaine pour les cas ambigus.",
+    "s4_p2": "Délais de paiement : Les paiements sont traités dans un délai de 7 jours ouvrables suivant la validation des soumissions. Nyansa AI se réserve le droit de suspendre ou de refuser un paiement en cas de fraude prouvée, de données hors zone, de qualité insuffisante ou de violation des présentes conditions.",
+    "s4_p3": "En cas de litige concernant un refus de paiement, l'agent peut soumettre une réclamation par email dans un délai de 14 jours suivant la notification.",
+    "s5_title": "5. Conduites Interdites",
+    "s5_p": "Il est strictement interdit d'utiliser la plateforme Nyansa AI pour :",
+    "s5_i1": "Soumettre des données frauduleuses, falsifiées, dupliquées ou hors zone.",
+    "s5_i2": "Tenter de contourner, manipuler ou tromper les systèmes automatisés de détection de fraude ou d'assurance qualité.",
+    "s5_i3": "Utiliser des bots, des scripts automatisés ou tout moyen artificiel pour générer des soumissions.",
+    "s5_i4": "Accéder à des fonctionnalités ou données non autorisées par votre compte (tentative d'intrusion).",
+    "s5_i5": "Partager vos identifiants d'accès avec des tiers ou permettre à d'autres d'utiliser votre compte.",
+    "s5_i6": "Extraire, aspirer ou copier systématiquement les données de la plateforme sans autorisation écrite.",
+    "s5_i7": "Utiliser la plateforme à des fins illégales, contraires à l'éthique ou portant atteinte aux droits de tiers.",
+    "s6_title": "6. Propriété des Données Soumises",
+    "s6_p1": "En soumettant des données via la plateforme, le contributeur accorde à Nyansa AI une licence mondiale, non exclusive, irrévocable et libre de redevances pour utiliser, reproduire, traiter et exploiter les données soumises aux fins de création de datasets d'intelligence artificielle.",
+    "s6_p2": "Le contributeur garantit qu'il détient tous les droits nécessaires sur les données soumises et libère Nyansa AI de toute responsabilité en cas de réclamations de tiers.",
+    "s7_title": "7. Disponibilité du Service",
+    "s7_p": "Nyansa AI s'efforce de garantir la disponibilité de la plateforme 24h/24. Cependant, des interruptions peuvent survenir pour des maintenances planifiées, des mises à jour ou des cas de force majeure. Nyansa AI ne sera pas tenu responsable des pertes liées à ces interruptions.",
+    "s8_title": "8. Modification des Conditions",
+    "s8_p1": "Nyansa AI se réserve le droit de modifier ces conditions à tout moment pour s'adapter aux évolutions légales, techniques ou commerciales. Les utilisateurs seront informés par email de toute modification substantielle au moins 15 jours avant son entrée en vigueur.",
+    "s8_p2": "L'utilisation continue de la plateforme après l'entrée en vigueur des nouvelles conditions constitue une acceptation tacite. Si vous refusez les nouvelles conditions, vous devez cesser d'utiliser la plateforme et supprimer votre compte.",
+    "s9_title": "9. Résiliation et Suspension",
+    "s9_p1": "Nyansa AI peut suspendre ou résilier l'accès d'un utilisateur à la plateforme, avec ou sans préavis, en cas de violation probée ou suspectée des présentes conditions, sans donner lieu à une indemnisation.",
+    "s9_p2": "Les utilisateurs peuvent à tout moment demander la suppression de leur compte en contactant notre équipe de support. La suppression entraîne l'effacement des données personnelles dans les délais définis dans notre Politique de Confidentialité.",
+    "s10_title": "10. Droit Applicable",
+    "s10_p": "Les présentes conditions générales sont soumises au droit ivoiran. Tout litige relatif à leur interprétation ou exécution relevera de la juridiction exclusive des tribunaux d'Abidjan, après une tentative de résolution amiable dans un délai de 30 jours."
   }
 }

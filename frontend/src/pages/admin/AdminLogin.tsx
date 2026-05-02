@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SplashScreen from '../../components/SplashScreen';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
+  const [showSplash, setShowSplash] = useState(true);
+  const [showSuccessSplash, setShowSuccessSplash] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -31,14 +34,15 @@ const AdminLogin = () => {
         throw new Error(`Server returned ${response.status} ${response.statusText}`);
       }
 
-      if (response.ok && data.token) {
-        // Save the token to localStorage
-        localStorage.setItem('token', data.token);
-        // Redirect to dashboard
-        navigate('/admin/dashboard');
+      if (response.ok && data.access) {
+        // Save the tokens to localStorage
+        localStorage.setItem('token', data.access);
+        localStorage.setItem('refreshToken', data.refresh);
+        // Show success animation instead of immediate redirect
+        setShowSuccessSplash(true);
       } else {
         // Handle incorrect credentials
-        setError(data.non_field_errors?.[0] || 'Invalid email or password');
+        setError(data.detail || 'Invalid email or password');
       }
     } catch (err) {
       setError('An error occurred while trying to log in.');
@@ -49,12 +53,15 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="admin-login-layout">
-      {/* Simplified Top Nav */}
+    <>
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      {showSuccessSplash && <SplashScreen onComplete={() => navigate('/admin/dashboard')} />}
+      <div className="admin-login-layout">
+        {/* Simplified Top Nav */}
       <nav className="admin-login-nav">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)', fontSize: '1.5rem', fontVariationSettings: "'FILL' 1" }}>eco</span>
-          <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-primary)', letterSpacing: '-0.025em' }}>AgriData AI</span>
+          <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-primary)', letterSpacing: '-0.025em' }}>NYANSA AI</span>
         </div>
         <div>
           <a href="#" style={{ color: 'var(--color-on-surface-variant)', fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none' }}>Support</a>
@@ -157,8 +164,8 @@ const AdminLogin = () => {
 
       <footer className="admin-login-footer">
         <div>
-          <span style={{ fontWeight: 800, color: 'var(--color-primary)' }}>AgriData AI</span>
-          <p style={{ fontSize: '0.75rem', color: 'var(--color-outline)', marginTop: '0.25rem' }}>© 2024 AgriData AI Solutions. Precision in every grain.</p>
+          <span style={{ fontWeight: 800, color: 'var(--color-primary)' }}>NYANSA AI</span>
+          <p style={{ fontSize: '0.75rem', color: 'var(--color-outline)', marginTop: '0.25rem' }}>© 2024 NYANSA AI Solutions. Precision in every grain.</p>
         </div>
         <div style={{ display: 'flex', gap: '1.5rem' }}>
           <a href="#" className="admin-footer-link">Privacy Policy</a>
@@ -168,6 +175,7 @@ const AdminLogin = () => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 

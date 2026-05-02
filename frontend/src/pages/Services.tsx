@@ -1,6 +1,5 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -43,7 +42,14 @@ const Services = () => {
                 <div style={{ backgroundColor: 'var(--color-surface)', padding: '1.5rem', borderRadius: '1rem', border: '1px solid var(--color-border)' }}>
                   <span className="text-xs font-bold uppercase" style={{ color: 'var(--color-primary)', marginBottom: '0.75rem', display: 'block', letterSpacing: '0.1em' }}>{t('services.text.entity')}</span>
                   <div style={{ backgroundColor: 'rgba(31, 122, 99, 0.05)', padding: '1rem', borderRadius: '0.5rem', fontFamily: 'monospace', fontSize: '0.875rem' }}>
-                    <span style={{ backgroundColor: 'rgba(31, 122, 99, 0.2)', padding: '0 0.25rem', borderRadius: '0.25rem' }}>[Crop: Sorghum]</span> shows signs of <span style={{ backgroundColor: 'rgba(133, 64, 54, 0.2)', padding: '0 0.25rem', borderRadius: '0.25rem' }}>[Pathogen: Anthracnose]</span> in <span style={{ backgroundColor: 'rgba(0, 109, 55, 0.2)', padding: '0 0.25rem', borderRadius: '0.25rem' }}>[Region: Northern Ghana]</span>.
+                    <Trans
+                      i18nKey="services.text.entity_example"
+                      components={[
+                        <span key="0" style={{ backgroundColor: 'rgba(31, 122, 99, 0.2)', padding: '0 0.25rem', borderRadius: '0.25rem' }} />,
+                        <span key="1" style={{ backgroundColor: 'rgba(133, 64, 54, 0.2)', padding: '0 0.25rem', borderRadius: '0.25rem' }} />,
+                        <span key="2" style={{ backgroundColor: 'rgba(0, 109, 55, 0.2)', padding: '0 0.25rem', borderRadius: '0.25rem' }} />
+                      ]}
+                    />
                   </div>
                 </div>
                 <div style={{ backgroundColor: 'var(--color-surface)', padding: '1.5rem', borderRadius: '1rem', border: '1px solid var(--color-border)' }}>

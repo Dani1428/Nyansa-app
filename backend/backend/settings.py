@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^=%)u#lw33ny0fx1xwkk@t79*=_xr(zj*z@w2#sa-#&i%c99pd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.100.52', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'corsheaders',
+    'storages',
     'core',
     'datasets',
     'contact',
+    'django_celery_results',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +86,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://annotation:12345678@localhost:5432/annotation'
+        default='postgresql://nyansa_ai:12345678@localhost:5433/nyansa_ai'
     )
 }
 
@@ -117,11 +121,95 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Security Settings for Production
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'core.authentication.APIKeyAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    # Rate limiting
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/min',      # Unauthenticated: 10 requests/min
+        'user': '100/hour',    # Standard users: 100 req/hour
+        'auth': '5/min',       # Auth endpoints: 5 req/min
+    },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 12,
+}
+
+# SimpleJWT settings
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+}
+
+# AWS S3 Settings (User to provide actual keys in .env)
+import os
+from dotenv import load_dotenv
+load_dotenv(override=True)  # Always override cached env vars
+
+# AWS S3 - only use if real keys are set
+_aws_key = os.getenv('AWS_ACCESS_KEY_ID', '')
+AWS_ACCESS_KEY_ID = _aws_key if _aws_key and not _aws_key.startswith('your-') else None
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME', 'nyansa-data-media')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'us-east-1')
+
+# Only use S3 storage when real AWS keys are provided
+if AWS_ACCESS_KEY_ID:
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
+
+# Twilio - strip placeholder values so mock mode activates
+def _clean_env(key):
+    val = os.getenv(key, '')
+    return val if val and not val.startswith('your-') else ''
+
+TWILIO_ACCOUNT_SID = _clean_env('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = _clean_env('TWILIO_AUTH_TOKEN')
+TWILIO_PHONE_NUMBER = _clean_env('TWILIO_PHONE_NUMBER')
+TWILIO_VERIFY_SERVICE_SID = _clean_env('TWILIO_VERIFY_SERVICE_SID')
+
+# Celery Configuration
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6380/0')
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60 # 30 minutes

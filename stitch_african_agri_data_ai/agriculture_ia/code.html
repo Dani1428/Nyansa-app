@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgriLingua AI | Bridging Agriculture &amp; Linguistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002018",
+                        "surface-bright": "#f7faf7",
+                        "secondary": "#006d37",
+                        "on-secondary-fixed": "#00210c",
+                        "background": "#f7faf7",
+                        "on-surface-variant": "#3e4945",
+                        "surface-container-highest": "#e0e3e0",
+                        "secondary-fixed": "#6bfe9c",
+                        "inverse-primary": "#82d6bb",
+                        "outline": "#6e7a74",
+                        "on-tertiary-fixed-variant": "#74332a",
+                        "tertiary-fixed": "#ffdad5",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#a3574c",
+                        "inverse-on-surface": "#eef2ee",
+                        "primary-fixed-dim": "#82d6bb",
+                        "on-tertiary-container": "#ffebe8",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#016b55",
+                        "primary": "#00604c",
+                        "primary-fixed": "#9ef3d7",
+                        "secondary-fixed-dim": "#4ae183",
+                        "on-surface": "#181d1b",
+                        "surface-container-high": "#e5e9e5",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#005140",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7faf7",
+                        "primary-container": "#1f7a63",
+                        "surface-container-low": "#f1f4f1",
+                        "on-tertiary-fixed": "#3c0804",
+                        "on-primary-container": "#b1ffe4",
+                        "on-secondary-container": "#00743a",
+                        "inverse-surface": "#2d312f",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#854036",
+                        "surface-container": "#ebefeb",
+                        "on-error-container": "#93000a",
+                        "on-background": "#181d1b",
+                        "on-secondary-fixed-variant": "#005228",
+                        "surface-variant": "#e0e3e0",
+                        "secondary-container": "#6bfe9c",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d7dbd7",
+                        "outline-variant": "#bec9c3",
+                        "tertiary-fixed-dim": "#ffb4a8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "body": ["Public Sans"],
+                        "label": ["Public Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #f7faf7; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 h-20 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+<div class="flex justify-between items-center max-w-[1200px] mx-auto px-6 lg:px-8 h-full">
+<div class="text-2xl font-black text-[#1F7A63] dark:text-emerald-400 tracking-tighter">AgriLingua AI</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#1F7A63] font-sans text-sm font-semibold tracking-wide transition-all duration-300" href="#">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#1F7A63] font-sans text-sm font-semibold tracking-wide transition-all duration-300" href="#">Datasets</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#1F7A63] font-sans text-sm font-semibold tracking-wide transition-all duration-300" href="#">Languages</a>
+<a class="text-[#1F7A63] dark:text-emerald-400 border-b-2 border-[#1F7A63] pb-1 font-sans text-sm font-semibold tracking-wide transition-all duration-300" href="#">Agriculture</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#1F7A63] font-sans text-sm font-semibold tracking-wide transition-all duration-300" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#1F7A63] font-sans text-sm font-semibold tracking-wide transition-all duration-300" href="#">Contact</a>
+</div>
+<button class="bg-[#1F7A63] text-white px-6 py-2.5 rounded-xl font-bold text-sm active:scale-95 transform transition-transform hover:opacity-90">
+                Get a Quote
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-20 h-[870px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="wide shot of a sun-drenched cocoa plantation in West Africa with lush green leaves and vibrant yellow cocoa pods under a clear blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCwnC0Aglt6H7gvOuI0hqkdd5cn96K2ofJCSaK2ldmDz10F4bUSeWpiPPmU0KL80wmFDmcD7cjE-vZJJXXCyK_xEqnA8v55rHAOpqk48_8NasaLmt7iKF31MOn3zq8SvdSb2QEIZUtwjAOCXdlIW7p7lKjMsToAPsP790oqOJcktzC_a_rZI-PIDGIVIKhQoOdq6ZxtvHfNNZpcMlOCtrC9hMksqvsP00hi1jcGuZpNR-Pf2OGCZTR6EkscBCUQdqquylNMiusyYlL"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-primary-fixed/80 via-on-primary-fixed/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-8 w-full">
+<div class="max-w-2xl">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-xs font-bold uppercase tracking-wider mb-6">
+<span class="mr-2">●</span> Precision Agronomy
+                </div>
+<h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-6">
+                    Linguistic Intelligence for <span class="text-secondary-fixed">Sustainable Growth.</span>
+</h1>
+<p class="text-lg text-surface-container-low mb-10 max-w-lg leading-relaxed">
+                    Bridging the gap between agricultural fieldwork and data science through multi-modal AI datasets and localized linguistic models.
+                </p>
+<div class="flex gap-4">
+<button class="bg-primary text-white h-12 px-8 rounded-xl font-bold flex items-center gap-2 shadow-xl hover:bg-on-primary-fixed-variant transition-all">
+                        Explore Datasets <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="border-2 border-white text-white h-12 px-8 rounded-xl font-bold hover:bg-white hover:text-primary transition-all">
+                        Watch Demo
+                    </button>
+</div>
+</div>
+<!-- Floating Data Overlay (Bento Style Preview) -->
+<div class="absolute bottom-12 right-6 lg:right-8 hidden xl:grid grid-cols-2 gap-4 w-96">
+<div class="glass-panel p-4 rounded-xl shadow-xl">
+<div class="text-[10px] uppercase font-bold text-primary mb-2">Live Diagnostics</div>
+<div class="h-2 w-full bg-outline-variant/30 rounded-full mb-1">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+<div class="text-xs font-semibold text-on-surface">Cacao Yield Optimization</div>
+</div>
+<div class="glass-panel p-4 rounded-xl shadow-xl">
+<div class="text-[10px] uppercase font-bold text-secondary mb-2">Language Model</div>
+<div class="text-xs font-bold">Wolof / Akan / French</div>
+<div class="mt-2 text-[10px] text-on-surface-variant">Annotated Field Voices</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 1: Crops Covered -->
+<section class="py-24 bg-white">
+<div class="max-w-[1200px] mx-auto px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-xl">
+<h2 class="text-xs uppercase font-black text-primary tracking-[0.2em] mb-4">Core Ecosystem</h2>
+<h3 class="text-4xl font-extrabold text-on-surface tracking-tight leading-none">Crops Integrated in Our <br/>Knowledge Graph.</h3>
+</div>
+<p class="text-on-surface-variant max-w-sm text-sm">Our AI models are specifically trained on high-value perennial and industrial crops essential to global food security.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Cacao -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-1 border border-slate-100 transition-all hover:shadow-[0px_8px_30px_rgba(15,23,42,0.08)]">
+<div class="relative h-64 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="close up of a single red cocoa pod hanging from a tree branch in a tropical garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa1_1pLOnaGSLi3SiCpIMWwpVwr0XLho3olCDC9pQRwyshFotZNnLQ_YwMzh8Pq9_kSVvnvX6Drqaj6HlhSitAlUfKW9HmgPeUNM45BRbsAUn6HTpEDHY8-UG-V3PT98PVsqZzZ1PFaAwskQ3JuV_RbeI7fxkYsPNu6_gnsZvO2a4YUhAZ0VW72tGofchhthckKfom0ZrYDkg5OMH5Ccd3kUwYIegg-NqS-nXowo_DaIxDlv3kCDJ6CUXUFRQKBq_-c5PgZ6--VMAx"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Premium Crop</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="energy_savings_leaf">energy_savings_leaf</span>
+</div>
+<h4 class="text-xl font-bold">Cacao</h4>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Integrated datasets for Moniliophthora roreri detection and localized Swahili/Akan voice support for farmers.</p>
+</div>
+</div>
+<!-- Hévéa -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-1 border border-slate-100 transition-all hover:shadow-[0px_8px_30px_rgba(15,23,42,0.08)]">
+<div class="relative h-64 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="systematic rubber tree plantation in rows with white latex dripping from the bark into collection cups" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYF1q4cGVsz-4gLH5S53FqK_4nUToxeVCJYIwo1immPeuYbjYEvx-Vfv0uCkCJYi3olIo6AtkjcCVldTdBw9VqvI1Y7AmnT_hs4jTcBGHP41deyMx5xekckcucEG5njE0TCLos4U3v3-wJUEBv6iApILmJU8MBXvg7CU_rHgxODD_4sHiojLKS5uJvH48RoQDoCy1LnpsIuuVir7AH7vrfRXsMgl7tzLIE4lNI6h8kaREPYV487D-nYXiPi2WSczxVKbI_ddgUMo9T"/>
+<div class="absolute top-4 left-4">
+<span class="bg-secondary/90 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Industrial</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
+</div>
+<h4 class="text-xl font-bold">Hévéa</h4>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Rubber tree latex flow analysis and fungal infection monitoring using high-precision imagery from field experts.</p>
+</div>
+</div>
+<!-- Palmier -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-1 border border-slate-100 transition-all hover:shadow-[0px_8px_30px_rgba(15,23,42,0.08)]">
+<div class="relative h-64 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="lush palm oil plantation with large fronds stretching under a bright tropical sun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnBKDsFXb_Yz4CtQf6PGid3FB6CZj-wb2JBlPlgyBP2RSXN1dKSpBETBy9iAfSP8U-dyfM-CrHvChsFDEAT_IJvjcbGu0KF-xdRtE-GUejVnuywFa6Q8o8yD7rEipSDFMdwNCr8zIqoWTkoo6nPj1DYhakjctG-9myPWdYISR9F1r0zoZZqfbr8j1u7kBi0Uxk_cToTidil0ISs7nfrcbD_MOS8BNLrrusy6UuklHaWWgX0oqHNZGrNk__cAUF8gx30u--ex8UPLSc"/>
+<div class="absolute top-4 left-4">
+<span class="bg-tertiary/90 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Vital Asset</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="palm_scan">scan</span>
+</div>
+<h4 class="text-xl font-bold">Palmier</h4>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Sustainable farming benchmarks and harvest cycle predictions across multi-regional climatic data points.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Types of Data (Bento Grid) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-[1200px] mx-auto px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-xs uppercase font-black text-primary tracking-[0.2em] mb-4">Precision Intelligence</h2>
+<h3 class="text-4xl font-extrabold text-on-surface">Multimodal Linguistic Data.</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[240px]">
+<!-- Item 1: Annotated Images -->
+<div class="md:col-span-8 md:row-span-2 relative rounded-3xl bg-white shadow-sm overflow-hidden p-8 flex flex-col justify-between group border border-slate-100">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 group-hover:opacity-30 transition-opacity">
+<img class="w-full h-full object-cover grayscale" data-alt="a digital interface showing microscopic leaf structure with bounding boxes and AI metadata labels" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRl3IKuogc7q4zeNusTOpV_i4dyVWukhu5hSxN2G6xFkOLMErMignlZthf_DmUDzVGbIyGqytet7rtjYL0EBX2C0JceKL4m4TrDy3z0PLzw40dJSEgbTLhTfUY3ZAddnC8-wGmt6S3TxVYEdbcIFauGFJPyjUuuNKm5pS73R9Hd0tbsrXlB75zMBiHZq3Yp32vkJthjqwjUFn-DLyQBIqFF3kNrpCSXCOWQZHPg3kyBpWdKO8pkWTuyvlR9djTl48zqieomtvRORND"/>
+</div>
+<div class="relative z-10 max-w-md">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<h4 class="text-3xl font-bold mb-4">Annotated Images</h4>
+<p class="text-on-surface-variant text-lg leading-relaxed">High-resolution field imagery with expert segmentation for pest, disease, and nutritional deficiency identification. Validated by certified agronomists across 12 climatic zones.</p>
+</div>
+<div class="relative z-10 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-[10px] font-bold">1.2M LABELS</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-[10px] font-bold">4K RESOLUTION</span>
+</div>
+</div>
+<!-- Item 2: Field Voices -->
+<div class="md:col-span-4 md:row-span-1 rounded-3xl bg-primary text-white p-8 flex flex-col justify-between shadow-xl">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<span class="material-symbols-outlined opacity-50" data-icon="waves">waves</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Field Voices</h4>
+<p class="text-primary-fixed text-sm">Natural speech datasets in regional dialects for offline voice-to-action tools.</p>
+</div>
+</div>
+<!-- Item 3: Diagnostic Text -->
+<div class="md:col-span-4 md:row-span-1 rounded-3xl bg-white shadow-sm border border-slate-100 p-8 flex flex-col justify-between hover:border-primary/50 transition-colors">
+<div>
+<div class="w-10 h-10 bg-on-tertiary-fixed-variant/10 text-tertiary rounded-lg flex items-center justify-center mb-4">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<h4 class="text-xl font-bold mb-2">Diagnostic Text</h4>
+<p class="text-on-surface-variant text-sm">Semantic analysis of expert reports and localized farmer feedback logs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Use Cases (Modern Feature Cards) -->
+<section class="py-24 bg-white">
+<div class="max-w-[1200px] mx-auto px-6 lg:px-8">
+<div class="mb-16">
+<h2 class="text-xs uppercase font-black text-primary tracking-[0.2em] mb-4">Real-World Impact</h2>
+<h3 class="text-4xl font-extrabold text-on-surface max-w-xl">Transforming Field Data into Actionable Decisions.</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Case 1 -->
+<div class="space-y-6">
+<div class="aspect-square rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+<img class="w-full h-full object-cover" data-alt="a smartphone screen displaying a crop diagnosis app held against a diseased plant leaf in a field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaUyTFD1JcSo0ngpJ1zyybNezJnnO9UZz8k8VNzrAdUKmAQsPyrYrm1WVM1hESpVORlNS5DBEGEEVpHv7xyCr-HxVbKwU4DU_ddGpMnx60a5n2bx1gVfLr7P1NmwAiP0MXiixBeDnBPtcXHzUkPwrU8IBirNBaJfaCAi2g67ewuXcfw8fB99II9fNUMrfItw5LMz5kzOAA-aCZEFGjG6juBk2NSi5CWunQ6eJe6RXNSiUU2qBlolyC4cFKOv19QrJyHAMbJDmEA3gc"/>
+</div>
+<div>
+<h4 class="text-2xl font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="bug_report">bug_report</span>
+                            Disease Detection
+                        </h4>
+<p class="text-on-surface-variant leading-relaxed">Instant identification of phytosanitary threats using computer vision optimized for low-bandwidth environments. Reduce crop loss by up to 40% through early intervention.</p>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="space-y-6">
+<div class="aspect-square rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+<img class="w-full h-full object-cover" data-alt="minimalist dark electronic device with glowing blue data points and wave forms representing AI processing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh1vbg6ZIdriGEfPN_pqEkpbpb9d-jo7cU19vxcyIM0E48WByZsSmJ4xuCPZPSpFSERBrWtDH2MBusfCn3UXpu6G9wXsQwIMSXLAOwyS3Z9xB_hSofpKvVG91y37qXXHPFD47nlXYiqorJqGITX226697ab-HegrR11IkNj3RGbSzpIpVWtjMsKlHkGFJsT9GNKY-B8bDxxHMOTum0sZaeRcjR4SmbC_Ki3WEnz4xya98AAB1T352HZjTalWdtZwl0sf5we0HCsXrL"/>
+</div>
+<div>
+<h4 class="text-2xl font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="mic_external_on">mic_external_on</span>
+                            Voice Assistant
+                        </h4>
+<p class="text-on-surface-variant leading-relaxed">Interactive agricultural advice delivered in local dialects, enabling non-literate farmers to access global agronomic expertise via voice commands.</p>
+</div>
+</div>
+<!-- Case 3 -->
+<div class="space-y-6">
+<div class="aspect-square rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+<img class="w-full h-full object-cover" data-alt="aerial view of a precisely patterned farm field with varying shades of green indicating different soil or health zones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbyfDaOTQprzVWvvZkhMHpwi2bbu_rktFifx7EkcJHDTwgZS9Lr4CJlQReDzGKK5PFRQQZLdU-vp_yOEUKnJrOmytXQaPnaP-EBMnKSlX1AJqwv4nCzAAfW9tDsQ4Ed3D0mF4n22W6umiSQK-KUNK80hjcnIrCZmXyTkhGqx7DjdZ2O4zQtRWtkhNBjddLVzaU-Dh6rYKfP1dHOnClPZ4Vq_Mslstls4Lau8DlNsxRAigLkYdlA80DdV-mRA2og8YadLLiZMIwWuHJ"/>
+</div>
+<div>
+<h4 class="text-2xl font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+                            Yield Prediction
+                        </h4>
+<p class="text-on-surface-variant leading-relaxed">AI-driven predictive modeling for harvest volumes and quality grades, helping cooperatives and exporters manage supply chain logistics efficiently.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-16 border-t border-slate-100 dark:border-slate-900 bg-white dark:bg-slate-950">
+<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold text-[#1F7A63] dark:text-emerald-400 mb-6">AgriLingua AI</div>
+<p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest font-bold">© 2024 AgriLingua Data Science. Bridging agriculture and linguistics.</p>
+</div>
+<div class="col-span-1">
+<h5 class="font-sans text-xs uppercase tracking-widest font-bold text-[#1F7A63] mb-6">Resources</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 text-xs uppercase tracking-widest font-bold hover:text-[#1F7A63] transition-colors cursor-pointer" href="#">Documentation</a></li>
+<li><a class="text-slate-500 text-xs uppercase tracking-widest font-bold hover:text-[#1F7A63] transition-colors cursor-pointer" href="#">API Access</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-sans text-xs uppercase tracking-widest font-bold text-[#1F7A63] mb-6">Company</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 text-xs uppercase tracking-widest font-bold hover:text-[#1F7A63] transition-colors cursor-pointer" href="#">About Us</a></li>
+<li><a class="text-slate-500 text-xs uppercase tracking-widest font-bold hover:text-[#1F7A63] transition-colors cursor-pointer" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-sans text-xs uppercase tracking-widest font-bold text-[#1F7A63] mb-6">Connect</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 text-xs uppercase tracking-widest font-bold hover:text-[#1F7A63] transition-colors cursor-pointer" href="#">Contact Support</a></li>
+<li><a class="text-slate-500 text-xs uppercase tracking-widest font-bold hover:text-[#1F7A63] transition-colors cursor-pointer" href="#">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

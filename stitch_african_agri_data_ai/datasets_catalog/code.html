@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Datasets Catalog | AgriLingua AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002018",
+                        "surface-bright": "#f7faf7",
+                        "secondary": "#006d37",
+                        "on-secondary-fixed": "#00210c",
+                        "background": "#f7faf7",
+                        "on-surface-variant": "#3e4945",
+                        "surface-container-highest": "#e0e3e0",
+                        "secondary-fixed": "#6bfe9c",
+                        "inverse-primary": "#82d6bb",
+                        "outline": "#6e7a74",
+                        "on-tertiary-fixed-variant": "#74332a",
+                        "tertiary-fixed": "#ffdad5",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#a3574c",
+                        "inverse-on-surface": "#eef2ee",
+                        "primary-fixed-dim": "#82d6bb",
+                        "on-tertiary-container": "#ffebe8",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#016b55",
+                        "primary": "#00604c",
+                        "primary-fixed": "#9ef3d7",
+                        "secondary-fixed-dim": "#4ae183",
+                        "on-surface": "#181d1b",
+                        "surface-container-high": "#e5e9e5",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#005140",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7faf7",
+                        "primary-container": "#1f7a63",
+                        "surface-container-low": "#f1f4f1",
+                        "on-tertiary-fixed": "#3c0804",
+                        "on-primary-container": "#b1ffe4",
+                        "on-secondary-container": "#00743a",
+                        "inverse-surface": "#2d312f",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#854036",
+                        "surface-container": "#ebefeb",
+                        "on-error-container": "#93000a",
+                        "on-background": "#181d1b",
+                        "on-secondary-fixed-variant": "#005228",
+                        "surface-variant": "#e0e3e0",
+                        "secondary-container": "#6bfe9c",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d7dbd7",
+                        "outline-variant": "#bec9c3",
+                        "tertiary-fixed-dim": "#ffb4a8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 h-20 bg-white border-b border-slate-100 shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+<div class="flex justify-between items-center max-w-[1200px] mx-auto px-6 lg:px-8 h-full">
+<div class="text-2xl font-black text-[#1F7A63] tracking-tighter">AgriLingua AI</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="font-sans text-sm font-semibold tracking-wide text-slate-600 hover:text-[#1F7A63] transition-all duration-300" href="#">Services</a>
+<a class="font-sans text-sm font-semibold tracking-wide text-[#1F7A63] border-b-2 border-[#1F7A63] pb-1" href="#">Datasets</a>
+<a class="font-sans text-sm font-semibold tracking-wide text-slate-600 hover:text-[#1F7A63] transition-all duration-300" href="#">Languages</a>
+<a class="font-sans text-sm font-semibold tracking-wide text-slate-600 hover:text-[#1F7A63] transition-all duration-300" href="#">Agriculture</a>
+<a class="font-sans text-sm font-semibold tracking-wide text-slate-600 hover:text-[#1F7A63] transition-all duration-300" href="#">About</a>
+<a class="font-sans text-sm font-semibold tracking-wide text-slate-600 hover:text-[#1F7A63] transition-all duration-300" href="#">Contact</a>
+</nav>
+<button class="bg-[#1F7A63] text-white px-6 py-2.5 rounded-xl font-bold hover:bg-on-primary-fixed-variant active:scale-95 transform transition-transform text-sm">
+                Get a Quote
+            </button>
+</div>
+</header>
+<main class="pt-32 pb-20 max-w-[1200px] mx-auto px-6 lg:px-8">
+<!-- Catalog Header -->
+<div class="mb-12">
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-4">Datasets Catalog</h1>
+<p class="text-on-surface-variant max-w-2xl">Access curated linguistic and agricultural datasets for training high-precision AI models. Our data is ethically sourced and verified by domain experts.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-10">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 flex-shrink-0 space-y-8">
+<div>
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4">Language</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Swahili</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Amharic</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Hausa</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Zulu</span>
+</label>
+</div>
+</div>
+<div class="pt-6 border-t border-surface-container-highest">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4">Type</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Text Corpus</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Audio (Speech)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Image + Metadata</span>
+</label>
+</div>
+</div>
+<div class="pt-6 border-t border-surface-container-highest">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4">Sector</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Crop Pathology</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Soil Nutrition</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Market Pricing</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Veterinary</span>
+</label>
+</div>
+</div>
+</aside>
+<!-- Main Content Grid -->
+<div class="flex-grow">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-white rounded-xl shadow-[0px_4px_20px_rgba(15,23,42,0.05)] border border-slate-100 p-6 flex flex-col hover:shadow-[0px_8px_30px_rgba(15,23,42,0.08)] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-[#1F7A63]/10 text-[#1F7A63] text-xs font-bold rounded-full uppercase tracking-tighter">Text Corpus</span>
+<span class="material-symbols-outlined text-slate-300" data-icon="article">article</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface mb-2">East African Maize Pest Dialogue</h2>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant mb-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="language">language</span>
+                                Swahili
+                            </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="database">database</span>
+                                4.2M Tokens
+                            </div>
+</div>
+<div class="mt-auto pt-6 flex items-center justify-between border-t border-slate-50">
+<span class="text-sm font-medium text-slate-500 italic">Sector: Crop Pathology</span>
+<button class="bg-[#1F7A63] text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-on-primary-fixed-variant transition-colors">
+                                Request Dataset
+                            </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-xl shadow-[0px_4px_20px_rgba(15,23,42,0.05)] border border-slate-100 p-6 flex flex-col hover:shadow-[0px_8px_30px_rgba(15,23,42,0.08)] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-tertiary-container/10 text-tertiary text-xs font-bold rounded-full uppercase tracking-tighter">Audio</span>
+<span class="material-symbols-outlined text-slate-300" data-icon="mic">mic</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface mb-2">Amharic Agronomy Extension Speech</h2>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant mb-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="language">language</span>
+                                Amharic
+                            </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="schedule">schedule</span>
+                                850 Hours
+                            </div>
+</div>
+<div class="mt-auto pt-6 flex items-center justify-between border-t border-slate-50">
+<span class="text-sm font-medium text-slate-500 italic">Sector: Extension Services</span>
+<button class="bg-[#1F7A63] text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-on-primary-fixed-variant transition-colors">
+                                Request Dataset
+                            </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white rounded-xl shadow-[0px_4px_20px_rgba(15,23,42,0.05)] border border-slate-100 p-6 flex flex-col hover:shadow-[0px_8px_30px_rgba(15,23,42,0.08)] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-[#1F7A63]/10 text-[#1F7A63] text-xs font-bold rounded-full uppercase tracking-tighter">Image + Metadata</span>
+<span class="material-symbols-outlined text-slate-300" data-icon="photo_library">photo_library</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface mb-2">Cassava Disease Visual Catalog</h2>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant mb-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="language">language</span>
+                                Multilingual
+                            </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="image">image</span>
+                                12k Images
+                            </div>
+</div>
+<div class="mt-auto pt-6 flex items-center justify-between border-t border-slate-50">
+<span class="text-sm font-medium text-slate-500 italic">Sector: Root Crops</span>
+<button class="bg-[#1F7A63] text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-on-primary-fixed-variant transition-colors">
+                                Request Dataset
+                            </button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white rounded-xl shadow-[0px_4px_20px_rgba(15,23,42,0.05)] border border-slate-100 p-6 flex flex-col hover:shadow-[0px_8px_30px_rgba(15,23,42,0.08)] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-[#1F7A63]/10 text-[#1F7A63] text-xs font-bold rounded-full uppercase tracking-tighter">Text Corpus</span>
+<span class="material-symbols-outlined text-slate-300" data-icon="history_edu">history_edu</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface mb-2">Hausa Soil Fertility Transactions</h2>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant mb-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="language">language</span>
+                                Hausa
+                            </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="database">database</span>
+                                1.8M Tokens
+                            </div>
+</div>
+<div class="mt-auto pt-6 flex items-center justify-between border-t border-slate-50">
+<span class="text-sm font-medium text-slate-500 italic">Sector: Soil Nutrition</span>
+<button class="bg-[#1F7A63] text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-on-primary-fixed-variant transition-colors">
+                                Request Dataset
+                            </button>
+</div>
+</div>
+</div>
+<!-- Featured Image Banner -->
+<div class="mt-12 relative h-48 rounded-2xl overflow-hidden group">
+<img alt="dataset visualization" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="overhead view of organized agricultural test plots with vibrant green crops and precise geometric patterns under natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWyBdJ_bNMn_ezo1bu32GcavTPXfO5kFwZeCHJjy9Qv0kSEc4Scfgihubwvo0xUtDY2sIx3cKcUSX4eZWD5V1QL_PXQ_pj3AB3Rc3Yrk6xN4HGAqQhri2l8p_st4eIH8g3dYSXLuG-CFz1zZGETk8QfDSGFKxTCqA_VKWB8MMhvAqM7fdfSRiuImdJra8ifRqAav0ja82RtSOddOZ-aAnYCIKQYp85nEj68x3iqjuIHMR0aCRfW8JHbAv2Tlu15T6AuRVVUmq0dLF6"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent flex flex-col justify-center px-10">
+<h4 class="text-white text-2xl font-bold mb-2">Don't see what you need?</h4>
+<p class="text-white/80 max-w-sm mb-4">We offer custom data collection and annotation services for specific regional dialects.</p>
+<div>
+<button class="bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm hover:bg-surface-bright transition-colors">Consult an Expert</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 border-t border-slate-100 bg-white">
+<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="space-y-4">
+<div class="text-lg font-bold text-[#1F7A63]">AgriLingua AI</div>
+<p class="text-xs text-slate-500 leading-relaxed">© 2024 AgriLingua Data Science. Bridging agriculture and linguistics.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-sans text-xs uppercase tracking-widest font-bold text-[#1F7A63]">Product</h4>
+<div class="flex flex-col gap-2">
+<a class="text-xs uppercase tracking-widest font-bold text-slate-500 hover:text-[#1F7A63] transition-colors" href="#">Documentation</a>
+<a class="text-xs uppercase tracking-widest font-bold text-slate-500 hover:text-[#1F7A63] transition-colors" href="#">API Access</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-sans text-xs uppercase tracking-widest font-bold text-[#1F7A63]">Company</h4>
+<div class="flex flex-col gap-2">
+<a class="text-xs uppercase tracking-widest font-bold text-slate-500 hover:text-[#1F7A63] transition-colors" href="#">About Us</a>
+<a class="text-xs uppercase tracking-widest font-bold text-slate-500 hover:text-[#1F7A63] transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-sans text-xs uppercase tracking-widest font-bold text-[#1F7A63]">Support</h4>
+<div class="flex flex-col gap-2">
+<a class="text-xs uppercase tracking-widest font-bold text-slate-500 hover:text-[#1F7A63] transition-colors" href="#">Contact Support</a>
+<a class="text-xs uppercase tracking-widest font-bold text-slate-500 hover:text-[#1F7A63] transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

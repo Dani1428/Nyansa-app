@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Languages &amp; Experts Management | AgriLinguist AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e0e3e0",
+                        "surface-bright": "#f7faf7",
+                        "on-tertiary-container": "#ffebe8",
+                        "primary-fixed": "#9ef3d7",
+                        "surface": "#f7faf7",
+                        "surface-container-highest": "#e0e3e0",
+                        "tertiary-container": "#a3574c",
+                        "on-primary-fixed-variant": "#005140",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eef2ee",
+                        "primary-fixed-dim": "#82d6bb",
+                        "surface-dim": "#d7dbd7",
+                        "secondary-fixed-dim": "#4ae183",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00604c",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#016b55",
+                        "on-surface": "#181d1b",
+                        "surface-container-high": "#e5e9e5",
+                        "on-tertiary-fixed-variant": "#74332a",
+                        "error": "#ba1a1a",
+                        "outline": "#6e7a74",
+                        "secondary": "#006d37",
+                        "on-secondary-container": "#00743a",
+                        "tertiary-fixed": "#ffdad5",
+                        "on-primary-fixed": "#002018",
+                        "secondary-container": "#6bfe9c",
+                        "tertiary": "#854036",
+                        "primary-container": "#1f7a63",
+                        "inverse-surface": "#2d312f",
+                        "on-secondary-fixed-variant": "#005228",
+                        "inverse-primary": "#82d6bb",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f1f4f1",
+                        "on-surface-variant": "#3e4945",
+                        "secondary-fixed": "#6bfe9c",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#3c0804",
+                        "surface-container": "#ebefeb",
+                        "on-primary-container": "#b1ffe4",
+                        "outline-variant": "#bec9c3",
+                        "background": "#f7faf7",
+                        "on-background": "#181d1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "body": ["Public Sans"],
+                        "label": ["Public Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-shadow { shadow-[0px_4px_20px_rgba(15,23,42,0.05)]; }
+        .sidebar-active-pill { border-right: 4px solid #00604c; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="flex flex-col fixed left-0 top-0 h-full z-50 py-4 bg-slate-50 dark:bg-slate-950 h-screen w-64 border-r border-slate-200 dark:border-slate-800 transition-all duration-200 ease-in-out">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">agriculture</span>
+</div>
+<div>
+<h2 class="text-sm font-bold text-emerald-900 dark:text-emerald-50 leading-tight">Admin Console</h2>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Agricultural Data Hub</p>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<div class="flex items-center px-3 py-3 rounded-xl cursor-pointer text-slate-600 dark:text-slate-400 hover:bg-emerald-50/50 dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</div>
+<div class="flex items-center px-3 py-3 rounded-xl cursor-pointer text-slate-600 dark:text-slate-400 hover:bg-emerald-50/50 dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined mr-3">assignment_late</span>
+<span class="font-medium text-sm">Project Requests</span>
+</div>
+<div class="flex items-center px-3 py-3 rounded-xl cursor-pointer text-slate-600 dark:text-slate-400 hover:bg-emerald-50/50 dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined mr-3">database</span>
+<span class="font-medium text-sm">Datasets Management</span>
+</div>
+<div class="flex items-center px-3 py-3 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-400 border-r-4 border-emerald-700 cursor-pointer">
+<span class="material-symbols-outlined mr-3">translate</span>
+<span class="font-medium text-sm">Languages &amp; Experts</span>
+</div>
+<div class="flex items-center px-3 py-3 rounded-xl cursor-pointer text-slate-600 dark:text-slate-400 hover:bg-emerald-50/50 dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</div>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full py-3 bg-primary-container text-on-primary-container rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Project
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-6 h-16 w-full sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+<div class="flex items-center gap-6">
+<span class="text-xl font-bold text-emerald-900 dark:text-emerald-50">AgriLinguist AI</span>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="Search data assets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-xs font-semibold text-emerald-900 dark:text-emerald-50">Admin User</p>
+<p class="text-[10px] text-slate-500">Profile Settings</p>
+</div>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="Close up portrait of a professional man with glasses in a bright modern office setting, friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Z4jFau4mfPCr5PWCaRdwOGLYEQEwdJ6SQWfXj9Dpnn_vv44ah_erpSj9yg36GXHSyVf1bYeWDTq197K_Jt1xnO8RM6pMmiZkpWNwt0jFQv9c_7fDCN2PACSVwUu8xwOFIF-dfxMH9AcwCzBa900DJNBNBlo6Uc4xfDIuF4jOmk6Jc48ZIpem-CCSau8gMTp4ZF-TVl4lEEofAtEPR0CLZvdSnpCxNpU3EGNvEajinXIcS0mu7OzvHJzHWDt5jSSJFh2ZU8TElfPo"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="p-8 max-w-[1200px] mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-10">
+<h1 class="text-3xl font-extrabold text-emerald-900 dark:text-emerald-50 tracking-tight">Languages &amp; Experts</h1>
+<p class="text-slate-500 mt-2">Manage supported linguistic data sets and coordinate with agricultural domain annotators.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Section: Language Management (4 cols) -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-[0px_4px_20px_rgba(15,23,42,0.05)] border border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-emerald-900 dark:text-emerald-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600">language</span>
+                                Active Dialects
+                            </h3>
+<button class="text-xs font-semibold text-primary hover:underline">Add New</button>
+</div>
+<div class="space-y-4">
+<!-- Language Item -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">EN</div>
+<div>
+<p class="text-sm font-semibold">Swahili (Kenya)</p>
+<p class="text-[10px] text-slate-400">1.2M Samples</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">FR</div>
+<div>
+<p class="text-sm font-semibold">Wolof (Senegal)</p>
+<p class="text-[10px] text-slate-400">840K Samples</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low opacity-60">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 flex items-center justify-center text-slate-400 font-bold text-xs">AM</div>
+<div>
+<p class="text-sm font-semibold">Amharic (Ethiopia)</p>
+<p class="text-[10px] text-slate-400">Archived</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">HA</div>
+<div>
+<p class="text-sm font-semibold">Hausa (Nigeria)</p>
+<p class="text-[10px] text-slate-400">2.1M Samples</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">ZU</div>
+<div>
+<p class="text-sm font-semibold">Zulu (South Africa)</p>
+<p class="text-[10px] text-slate-400">670K Samples</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<div class="bg-gradient-to-br from-primary to-emerald-900 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-bold text-lg mb-2">Translation Pipeline</h4>
+<p class="text-emerald-100 text-xs mb-4">Current model accuracy across all enabled local dialects.</p>
+<div class="flex items-end gap-1 mb-2 h-12">
+<div class="w-full bg-emerald-400/30 h-8 rounded-t"></div>
+<div class="w-full bg-emerald-400/30 h-12 rounded-t"></div>
+<div class="w-full bg-emerald-400/30 h-6 rounded-t"></div>
+<div class="w-full bg-emerald-400/30 h-10 rounded-t"></div>
+<div class="w-full bg-white h-9 rounded-t"></div>
+</div>
+<div class="flex justify-between text-[10px] font-medium text-emerald-200">
+<span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span>
+</div>
+</div>
+<!-- Decorative Abstract Shape -->
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+</div>
+</div>
+<!-- Right Section: Experts Table (8 cols) -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-[0px_4px_20px_rgba(15,23,42,0.05)] border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div>
+<h3 class="font-bold text-emerald-900 dark:text-emerald-50">Linguistic Experts &amp; Annotators</h3>
+<p class="text-xs text-slate-400 mt-1">Directory of certified agricultural domain specialists</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-xs font-semibold border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">Export CSV</button>
+<button class="px-4 py-2 text-xs font-semibold bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">Invite Expert</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Expert</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Specialization</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Language(s)</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Professional woman with a warm smile, wearing business casual attire, working in a light-filled research environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaSIjgCjkHwRxZTdHzV9ol5vvItalgINT-wDhvIzocoUGvJjAsGjd4eaksnBp7MLvmcbUb7RsUeSvgoN3xT_X9UlQJ7Z_YUq934wQy8UtQJggPq7fvFmGv7esZmqvna-aSXpEuPRQOJACsdKPxgju_I63vcxpBd7tUB1Qyhc_Fuk-6BMfSs1M6ggfQGR7LhjKBqsdLC1DSCTizUcyiNF5thYyEikARV_nGW-8TXPnpZN_KeG60sw7XL5BeuqDN0xOZXz9mCpMCL4xk"/>
+<div>
+<p class="text-sm font-bold text-emerald-900">Dr. Amina Diallo</p>
+<p class="text-[10px] text-slate-400">amina.d@agriai.org</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-emerald-50 text-emerald-700 rounded-md text-[10px] font-bold">Soil Science</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1">
+<span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold">WO</span>
+<span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold">FR</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-xs font-medium text-emerald-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a young male professional agronomist with a friendly expression, standing in a sunny outdoor field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaj58x0YDEKEJAYfjjwht_xuFFZu8Af9YSdi9zFfwInMTez4KR6xhtSAVX6UzxgsVnLqLKcvsEakQqZVEFLErmAAUTg9aQhQmYyiwecqYELy2JKeEOqYpQxv6Z6bZUtqiTppOpc1FjYLHZ2NZtrRuLEOnlHwy9dJaTcWuhH7qYWD9RJFocjs8FC3b5yjVCJJ3yZDV0Ce9tvtMh05M2Y8QF9aKjFtpfry6oxve9agzlGER8fs7ceiu2ZhrWCXws_V4TLjjue--CAXvN"/>
+<div>
+<p class="text-sm font-bold text-emerald-900">John Okoro</p>
+<p class="text-[10px] text-slate-400">j.okoro@fielddata.net</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-tertiary-fixed-dim/20 text-tertiary rounded-md text-[10px] font-bold">Crop Pathology</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1">
+<span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold">HA</span>
+<span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold">EN</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-xs font-medium text-emerald-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Close up portrait of a female linguist with glasses, looking thoughtful, neutral professional background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrUJmoep_81MrV10HbpG9BgpM7R_O7q-YLqsIJcrNTt2pQQgmVkBBQAVKYnU9iratyLfDz4Fh2gD0LFmFi6YTDYFNR8vJbw4_6rScu5Una-UuIankz5Ig8eFmEwxkhoTiByJVbUkf_oWNEw6BzkzwGRzP3RxsYcf2_JbNYD9A3xoTp5KZWQWusM14TyZTH0vyejOIQMk9TC014C-03OuKSOfmsN9hf9u77K03H_rfY63D0DGJVcxvOkOdv0lJNO8g-7JHEMA9fhSYI"/>
+<div>
+<p class="text-sm font-bold text-emerald-900">Elena Petrov</p>
+<p class="text-[10px] text-slate-400">e.petrov@lingua.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-primary-fixed/30 text-emerald-800 rounded-md text-[10px] font-bold">Morphology</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1">
+<span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold">ZU</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+<span class="text-xs font-medium text-slate-500">Idle</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a senior researcher with a professional demeanor, standing in a library or office with books" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDROWA0QD6nKRYpguIX2HRNtGXIS6ReMslnLBgTxo_6RmUHXEa_5Y9IjZjD5iEIOr9nejIKZSCwURdzaWMlejmpLIeWwJQY8G_mzeLcDXJFjwKjp-5XdmTVjKjMYFlf3aS86l6b9zyu_bqU_rqO4givHFz8eZpwWq53oZ9jqsbZW4g2yDdUA6QWnIYUu9CcQcu5Aiu_0fYNQ8-GTDe0fYBNjd-VOC-km0cMx0png9BHtL0Sajml19ZWnu1bye2NWCX7jgeNVN8OVW2i"/>
+<div>
+<p class="text-sm font-bold text-emerald-900">Dr. Samuel Mwangi</p>
+<p class="text-[10px] text-slate-400">sam.mwangi@uonbi.ac.ke</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-emerald-50 text-emerald-700 rounded-md text-[10px] font-bold">Agronomy</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1">
+<span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold">SW</span>
+<span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold">EN</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-xs font-medium text-emerald-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+<p class="text-[10px] font-medium text-slate-500">Showing 4 of 28 experts</p>
+<div class="flex gap-2">
+<button class="p-1 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-1 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Expert Activity Summary Section -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-5 rounded-xl border border-slate-100 shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Total Annotations</p>
+<h4 class="text-2xl font-bold text-emerald-900">42.8K</h4>
+<div class="mt-2 flex items-center gap-1 text-[10px] text-emerald-600 font-bold">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                                12% from last week
+                            </div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-slate-100 shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Verification Rate</p>
+<h4 class="text-2xl font-bold text-emerald-900">98.2%</h4>
+<div class="mt-2 flex items-center gap-1 text-[10px] text-emerald-600 font-bold">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                Above benchmark
+                            </div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-slate-100 shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Active Experts</p>
+<h4 class="text-2xl font-bold text-emerald-900">14</h4>
+<div class="mt-2 flex items-center gap-1 text-[10px] text-slate-400 font-bold">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                2 pending invites
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

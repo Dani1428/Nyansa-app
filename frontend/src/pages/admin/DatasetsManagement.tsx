@@ -58,15 +58,20 @@ const DatasetsManagement = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/api/v1/datasets/')
+    const token = localStorage.getItem('token');
+    fetch('/api/v1/datasets/', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
       .then(res => {
         if (!res.ok) throw new Error('API not ready');
         return res.json();
       })
       .then(data => {
-        if (data && data.length > 0) {
-          setDatasets(data);
-        }
+        const list = data.results || (Array.isArray(data) ? data : []);
+        setDatasets(list);
       })
       .catch(err => console.log('Error fetching datasets:', err))
       .finally(() => setIsLoading(false));
@@ -74,9 +79,13 @@ const DatasetsManagement = () => {
 
   const updateDatasetStatus = async (id: string, is_available: boolean) => {
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`/api/v1/datasets/${id}/`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json' 
+        },
         body: JSON.stringify({ is_available })
       });
       if (response.ok) {

@@ -1,0 +1,178 @@
+{
+  "languages": [
+    {
+      "name": "Gouro",
+      "code": "GOU",
+      "group": "Mande",
+      "dialects": [
+        {
+          "name": "Vavoua",
+          "code": "GOU-VAV",
+          "region": "Vavoua",
+          "priority": 1
+        },
+        {
+          "name": "Zuenoula",
+          "code": "GOU-ZUE",
+          "region": "Zuenoula",
+          "priority": 1
+        },
+        {
+          "name": "Sinfra",
+          "code": "GOU-SIN",
+          "region": "Sinfra",
+          "priority": 1
+        },
+        {
+          "name": "Bouafle",
+          "code": "GOU-BOU",
+          "region": "Bouafle",
+          "priority": 1
+        }
+      ]
+    },
+    {
+      "name": "Baoule",
+      "code": "BAO",
+      "group": "Akan",
+      "dialects": [
+        {
+          "name": "Centre",
+          "code": "BAO-CEN",
+          "region": "Bouake",
+          "priority": 1
+        },
+        {
+          "name": "Est",
+          "code": "BAO-EST",
+          "region": "Daoukro",
+          "priority": 1
+        },
+        {
+          "name": "Ouest",
+          "code": "BAO-OUE",
+          "region": "Yamoussoukro",
+          "priority": 2
+        },
+        {
+          "name": "Sud",
+          "code": "BAO-SUD",
+          "region": "Tiebissou",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "name": "Dioula",
+      "code": "DIO",
+      "group": "Mande",
+      "dialects": [
+        {
+          "name": "Standard",
+          "code": "DIO-STD",
+          "region": "National",
+          "priority": 1
+        },
+        {
+          "name": "Kong",
+          "code": "DIO-KON",
+          "region": "Kong",
+          "priority": 2
+        },
+        {
+          "name": "Odienne",
+          "code": "DIO-ODI",
+          "region": "Odienne",
+          "priority": 2
+        },
+        {
+          "name": "Korhogo",
+          "code": "DIO-KOR",
+          "region": "Korhogo",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "name": "Bete",
+      "code": "BET",
+      "group": "Krou",
+      "dialects": [
+        {
+          "name": "Daloa",
+          "code": "BET-DAL",
+          "region": "Daloa",
+          "priority": 1
+        },
+        {
+          "name": "Gagnoa",
+          "code": "BET-GAG",
+          "region": "Gagnoa",
+          "priority": 1
+        },
+        {
+          "name": "Soubre",
+          "code": "BET-SOU",
+          "region": "Soubre",
+          "priority": 2
+        },
+        {
+          "name": "Issia",
+          "code": "BET-ISS",
+          "region": "Issia",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "name": "Senoufo",
+      "code": "SEN",
+      "group": "Gour",
+      "dialects": [
+        {
+          "name": "Korhogo",
+          "code": "SEN-KOR",
+          "region": "Korhogo",
+          "priority": 1
+        },
+        {
+          "name": "Boundiali",
+          "code": "SEN-BOU",
+          "region": "Boundiali",
+          "priority": 1
+        },
+        {
+          "name": "Ferkessedougou",
+          "code": "SEN-FER",
+          "region": "Ferkessedougou",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "name": "Agni",
+      "code": "AGN",
+      "group": "Akan",
+      "dialects": [
+        {
+          "name": "Indenie",
+          "code": "AGN-IND",
+          "region": "Abengourou",
+          "priority": 1
+        },
+        {
+          "name": "Sanwi",
+          "code": "AGN-SAN",
+          "region": "Aboisso",
+          "priority": 1
+        },
+        {
+          "name": "Moronou",
+          "code": "AGN-MOR",
+          "region": "Bongouanou",
+          "priority": 2
+        }
+      ]
+    }
+  ]
+}

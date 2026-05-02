@@ -1,0 +1,61 @@
+.splash-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F7FAF7;
+  transition: opacity 0.5s ease-out;
+}
+
+.splash-container.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-word {
+  display: flex;
+  gap: 8px;
+  animation: global-pulse 1s ease-in-out infinite alternate;
+  animation-delay: 1.5s; /* Starts pulsing after letters appear */
+}
+
+.splash-letter {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #1F7A63;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: letter-appear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  /* Glow effect */
+  text-shadow: 0 0 20px rgba(107, 254, 156, 0.6);
+}
+
+@keyframes letter-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    text-shadow: 0 0 0px rgba(107, 254, 156, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 20px rgba(107, 254, 156, 0.6);
+  }
+}
+
+@keyframes global-pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+@media (min-width: 768px) {
+  .splash-letter {
+    font-size: 6rem;
+  }
+  .splash-word {
+    gap: 12px;
+  }
+}

@@ -1,12 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Language {
   id: string;
   code: string;
   name: string;
+  group: string;
   samples_count: string;
   active: boolean;
   archived?: boolean;
+}
+
+interface Dialect {
+  id: string;
+  name: string;
+  code: string;
+  region: string;
+  priority: number;
 }
 
 interface Expert {
@@ -20,24 +30,53 @@ interface Expert {
 }
 
 const LanguagesExperts = () => {
+  const { t } = useTranslation();
   const [languages, setLanguages] = useState<Language[]>([]);
   const [experts, setExperts] = useState<Expert[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
-  const [newLanguage, setNewLanguage] = useState({ code: '', name: '', samples_count: '0 Samples' });
+  const [activeExpertMenu, setActiveExpertMenu] = useState<string | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  
+  const [newLanguage, setNewLanguage] = useState({ code: '', name: '', group: 'General', samples_count: '0 Samples' });
+  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
+  const [dialects, setDialects] = useState<Dialect[]>([]);
+  const [isDialectLoading, setIsDialectLoading] = useState(false);
   const [newExpert, setNewExpert] = useState({ name: '', email: '', specialization: '', status: 'Active' as const, languages: [] as string[] });
+
+  // Handle clicking outside to close menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setActiveExpertMenu(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = localStorage.getItem('token');
       try {
         const [langRes, expRes] = await Promise.all([
-          fetch('/api/v1/languages/'),
-          fetch('/api/v1/experts/')
+          fetch('/api/v1/languages/', {
+            headers: { 'Authorization': `Bearer ${token}` }
+          }),
+          fetch('/api/v1/experts/', {
+            headers: { 'Authorization': `Bearer ${token}` }
+          })
         ]);
         
-        if (langRes.ok) setLanguages(await langRes.json());
-        if (expRes.ok) setExperts(await expRes.json());
+        if (langRes.ok) {
+          const data = await langRes.json();
+          setLanguages(data.results || (Array.isArray(data) ? data : []));
+        }
+        if (expRes.ok) {
+          const data = await expRes.json();
+          setExperts(data.results || (Array.isArray(data) ? data : []));
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -50,10 +89,14 @@ const LanguagesExperts = () => {
 
   const handleAddLanguage = async (e: React.FormEvent) => {
     e.preventDefault();
+    const token = localStorage.getItem('token');
     try {
       const response = await fetch('/api/v1/languages/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ ...newLanguage, active: true })
       });
       if (response.ok) {
@@ -69,10 +112,14 @@ const LanguagesExperts = () => {
 
   const handleInviteExpert = async (e: React.FormEvent) => {
     e.preventDefault();
+    const token = localStorage.getItem('token');
     try {
       const response = await fetch('/api/v1/experts/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ ...newExpert, avatar_url: '' })
       });
       if (response.ok) {
@@ -86,11 +133,43 @@ const LanguagesExperts = () => {
     }
   };
 
+  const fetchDialects = async (langId: string) => {
+    const token = localStorage.getItem('token');
+    setIsDialectLoading(true);
+    try {
+      const response = await fetch(`/api/v1/languages/${langId}/dialects/`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setDialects(data.results || (Array.isArray(data) ? data : []));
+      }
+    } catch (error) {
+      console.error('Error fetching dialects:', error);
+    } finally {
+      setIsDialectLoading(false);
+    }
+  };
+
+  const handleLanguageClick = (lang: Language) => {
+    if (selectedLanguage?.id === lang.id) {
+      setSelectedLanguage(null);
+      setDialects([]);
+    } else {
+      setSelectedLanguage(lang);
+      fetchDialects(lang.id);
+    }
+  };
+
   const toggleLanguage = async (id: string, currentStatus: boolean) => {
+    const token = localStorage.getItem('token');
     try {
       const response = await fetch(`/api/v1/languages/${id}/`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ active: !currentStatus })
       });
       if (response.ok) {
@@ -105,8 +184,8 @@ const LanguagesExperts = () => {
     <div className="admin-page-container">
       <div className="admin-page-header">
         <div>
-          <h1 className="admin-page-title">Languages & Experts</h1>
-          <p className="admin-page-desc">Manage supported linguistic data sets and coordinate with agricultural domain annotators.</p>
+          <h1 className="admin-page-title">{t('admin.languages.title')}</h1>
+          <p className="admin-page-desc">{t('admin.languages.desc')}</p>
         </div>
       </div>
 
@@ -118,50 +197,87 @@ const LanguagesExperts = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
               <h3 style={{ fontWeight: 800, color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.125rem' }}>
                 <span className="material-symbols-outlined" style={{ color: 'var(--color-secondary)' }}>language</span>
-                Active Dialects
+                {t('admin.languages.active_dialects')}
               </h3>
               <button 
                 onClick={() => setIsModalOpen(true)}
                 style={{ background: 'none', border: 'none', color: 'var(--color-primary)', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
               >
-                Add New
+                {t('admin.common.add_new')}
               </button>
             </div>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {languages.map((lang) => (
-                <div key={lang.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem', borderRadius: '0.5rem', backgroundColor: 'var(--color-surface-container-low)', opacity: lang.archived ? 0.6 : 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ width: '2rem', height: '2rem', borderRadius: '0.25rem', backgroundColor: lang.archived ? 'var(--color-surface-variant)' : 'rgba(31, 122, 99, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: lang.archived ? 'var(--color-on-surface-variant)' : 'var(--color-primary)', fontWeight: 800, fontSize: '0.75rem' }}>
-                      {lang.code}
+              {Array.isArray(languages) && languages.map((lang) => (
+                <div key={lang.id} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <div 
+                    onClick={() => handleLanguageClick(lang)}
+                    style={{ 
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
+                      padding: '0.75rem', borderRadius: '0.5rem', 
+                      backgroundColor: selectedLanguage?.id === lang.id ? 'rgba(31, 122, 99, 0.05)' : 'var(--color-surface-container-low)', 
+                      border: selectedLanguage?.id === lang.id ? '1px solid var(--color-primary)' : '1px solid transparent',
+                      cursor: 'pointer',
+                      opacity: lang.archived ? 0.6 : 1 
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <div style={{ width: '2rem', height: '2rem', borderRadius: '0.25rem', backgroundColor: lang.archived ? 'var(--color-surface-variant)' : 'rgba(31, 122, 99, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: lang.archived ? 'var(--color-on-surface-variant)' : 'var(--color-primary)', fontWeight: 800, fontSize: '0.75rem' }}>
+                        {lang.code}
+                      </div>
+                      <div>
+                        <p style={{ fontSize: '0.875rem', fontWeight: 600, margin: 0 }}>{lang.name}</p>
+                        <p style={{ fontSize: '0.625rem', color: 'var(--color-on-surface-variant)', margin: 0 }}>{lang.group} • {lang.samples_count}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p style={{ fontSize: '0.875rem', fontWeight: 600, margin: 0 }}>{lang.name}</p>
-                      <p style={{ fontSize: '0.625rem', color: 'var(--color-on-surface-variant)', margin: 0 }}>{lang.samples_count}</p>
+                    
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }} onClick={e => e.stopPropagation()}>
+                      <label style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', cursor: lang.archived ? 'not-allowed' : 'pointer' }}>
+                        <input type="checkbox" className="sr-only" checked={lang.active} onChange={() => toggleLanguage(lang.id, lang.active)} disabled={lang.archived} style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }} />
+                        <div style={{ width: '2.25rem', height: '1.25rem', backgroundColor: lang.active ? 'var(--color-primary)' : 'var(--color-outline-variant)', borderRadius: '9999px', transition: 'background-color 0.2s', position: 'relative' }}>
+                          <div style={{ position: 'absolute', top: '2px', left: lang.active ? 'calc(100% - 18px)' : '2px', width: '1rem', height: '1rem', backgroundColor: 'white', borderRadius: '50%', transition: 'all 0.2s' }}></div>
+                        </div>
+                      </label>
                     </div>
                   </div>
-                  
-                  <label style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', cursor: lang.archived ? 'not-allowed' : 'pointer' }}>
-                    <input type="checkbox" className="sr-only" checked={lang.active} onChange={() => toggleLanguage(lang.id, lang.active)} disabled={lang.archived} style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }} />
-                    <div style={{ width: '2.25rem', height: '1.25rem', backgroundColor: lang.active ? 'var(--color-primary)' : 'var(--color-outline-variant)', borderRadius: '9999px', transition: 'background-color 0.2s', position: 'relative' }}>
-                      <div style={{ content: '""', position: 'absolute', top: '2px', left: lang.active ? 'calc(100% - 18px)' : '2px', width: '1rem', height: '1rem', backgroundColor: 'white', borderRadius: '50%', transition: 'all 0.2s' }}></div>
+
+                  {selectedLanguage?.id === lang.id && (
+                    <div style={{ paddingLeft: '1rem', borderLeft: '2px solid var(--color-primary)', display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                      {isDialectLoading ? (
+                        <p style={{ fontSize: '0.75rem', color: 'var(--color-on-surface-variant)', padding: '0.5rem' }}>Loading dialects...</p>
+                      ) : (Array.isArray(dialects) && dialects.length === 0) ? (
+                        <p style={{ fontSize: '0.75rem', color: 'var(--color-on-surface-variant)', padding: '0.5rem' }}>No dialects defined.</p>
+                      ) : Array.isArray(dialects) && dialects.map(dialect => (
+                        <div key={dialect.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0.75rem', backgroundColor: 'var(--color-surface-container-high)', borderRadius: '0.375rem' }}>
+                          <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>{dialect.name}</span>
+                          <span style={{ fontSize: '0.625rem', color: 'var(--color-on-surface-variant)' }}>{dialect.region}</span>
+                        </div>
+                      ))}
                     </div>
-                  </label>
+                  )}
                 </div>
               ))}
             </div>
           </section>
 
-          <div style={{ background: 'linear-gradient(to bottom right, var(--color-primary), var(--color-on-primary-fixed-variant))', padding: '1.5rem', borderRadius: '0.75rem', color: 'white', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ 
+            background: 'linear-gradient(135deg, #00604c 0%, #004d3d 100%)', 
+            padding: '1.5rem', 
+            borderRadius: '0.75rem', 
+            color: 'white', 
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', 
+            position: 'relative', 
+            overflow: 'hidden' 
+          }}>
             <div style={{ position: 'relative', zIndex: 10 }}>
-              <h4 style={{ fontWeight: 800, fontSize: '1.125rem', marginBottom: '0.5rem' }}>Translation Pipeline</h4>
-              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.75rem', marginBottom: '1rem' }}>Current model accuracy across all enabled local dialects.</p>
+              <h4 style={{ fontWeight: 800, fontSize: '1.125rem', marginBottom: '0.5rem', color: 'white' }}>{t('admin.languages.pipeline.title')}</h4>
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.75rem', marginBottom: '1rem' }}>{t('admin.languages.pipeline.desc')}</p>
               
               <div style={{ display: 'flex', alignItems: 'flex-end', gap: '0.25rem', marginBottom: '0.5rem', height: '3rem' }}>
-                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.3)', height: '2rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
-                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.3)', height: '3rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
-                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.3)', height: '1.5rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
-                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.3)', height: '2.5rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
+                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.2)', height: '2rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
+                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.2)', height: '3rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
+                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.2)', height: '1.5rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
+                <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.2)', height: '2.5rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
                 <div style={{ width: '100%', backgroundColor: 'white', height: '2.25rem', borderRadius: '0.25rem 0.25rem 0 0' }}></div>
               </div>
               
@@ -178,16 +294,16 @@ const LanguagesExperts = () => {
           <div className="admin-table-container">
             <div className="admin-table-header" style={{ padding: '1.5rem' }}>
               <div>
-                <h3 style={{ fontWeight: 800, color: 'var(--color-primary)', fontSize: '1.125rem' }}>Linguistic Experts & Annotators</h3>
-                <p style={{ fontSize: '0.75rem', color: 'var(--color-on-surface-variant)', marginTop: '0.25rem' }}>Directory of certified agricultural domain specialists</p>
+                <h3 style={{ fontWeight: 800, color: 'var(--color-primary)', fontSize: '1.125rem' }}>{t('admin.languages.experts.title')}</h3>
+                <p style={{ fontSize: '0.75rem', color: 'var(--color-on-surface-variant)', marginTop: '0.25rem' }}>{t('admin.languages.experts.desc')}</p>
               </div>
               <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button style={{ padding: '0.5rem 1rem', fontSize: '0.75rem', fontWeight: 600, border: '1px solid var(--color-border)', borderRadius: '0.5rem', background: 'none', cursor: 'pointer' }}>Export CSV</button>
+                <button style={{ padding: '0.5rem 1rem', fontSize: '0.75rem', fontWeight: 600, border: '1px solid var(--color-border)', borderRadius: '0.5rem', background: 'none', cursor: 'pointer' }}>{t('admin.common.export')}</button>
                 <button 
                   onClick={() => setIsExpertModalOpen(true)}
                   style={{ padding: '0.5rem 1rem', fontSize: '0.75rem', fontWeight: 600, backgroundColor: 'var(--color-primary)', color: 'white', border: 'none', borderRadius: '0.5rem', cursor: 'pointer' }}
                 >
-                  Invite Expert
+                  {t('admin.languages.experts.invite')}
                 </button>
               </div>
             </div>
@@ -195,19 +311,19 @@ const LanguagesExperts = () => {
             <table className="admin-table">
               <thead>
                 <tr>
-                  <th>Expert</th>
-                  <th>Specialization</th>
-                  <th>Language(s)</th>
-                  <th>Status</th>
-                  <th style={{ textAlign: 'right' }}>Actions</th>
+                  <th>{t('admin.languages.experts.table.expert')}</th>
+                  <th>{t('admin.languages.experts.table.specialization')}</th>
+                  <th>{t('admin.languages.experts.table.languages')}</th>
+                  <th>{t('admin.languages.experts.table.status')}</th>
+                  <th style={{ textAlign: 'right' }}>{t('admin.common.actions')}</th>
                 </tr>
               </thead>
               <tbody>
                 {isLoading ? (
                   <tr><td colSpan={5} style={{ textAlign: 'center', padding: '2rem' }}>Loading experts...</td></tr>
-                ) : experts.length === 0 ? (
+                ) : (Array.isArray(experts) && experts.length === 0) ? (
                   <tr><td colSpan={5} style={{ textAlign: 'center', padding: '2rem' }}>No experts found.</td></tr>
-                ) : experts.map(expert => (
+                ) : Array.isArray(experts) && experts.map(expert => (
                   <tr key={expert.id}>
                     <td>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -225,7 +341,7 @@ const LanguagesExperts = () => {
                     </td>
                     <td>
                       <div style={{ display: 'flex', gap: '0.25rem' }}>
-                        {expert.languages.map(lang => (
+                        {Array.isArray(expert.languages) && expert.languages.map(lang => (
                           <span key={lang} style={{ padding: '0 0.5rem', height: '1.5rem', borderRadius: '9999px', backgroundColor: 'var(--color-surface-variant)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.625rem', fontWeight: 800 }}>
                             {lang.split(' ')[0]}
                           </span>
@@ -240,10 +356,43 @@ const LanguagesExperts = () => {
                         </span>
                       </div>
                     </td>
-                    <td style={{ textAlign: 'right' }}>
-                      <button className="admin-icon-btn" style={{ marginLeft: 'auto' }}>
+                    <td style={{ textAlign: 'right', position: 'relative' }}>
+                      <button 
+                        className="admin-icon-btn" 
+                        style={{ marginLeft: 'auto' }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveExpertMenu(activeExpertMenu === expert.id ? null : expert.id);
+                        }}
+                      >
                         <span className="material-symbols-outlined">more_vert</span>
                       </button>
+                      
+                      {activeExpertMenu === expert.id && (
+                        <div 
+                          ref={menuRef}
+                          style={{ 
+                            position: 'absolute', right: '1rem', top: '3rem', zIndex: 50,
+                            backgroundColor: 'white', borderRadius: '0.75rem', padding: '0.5rem',
+                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                            border: '1px solid var(--color-border)', minWidth: '160px'
+                          }}
+                        >
+                          <button style={{ width: '100%', textAlign: 'left', padding: '0.75rem 1rem', borderRadius: '0.5rem', background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <span className="material-symbols-outlined" style={{ fontSize: '1.125rem' }}>edit</span>
+                            {t('admin.common.edit')}
+                          </button>
+                          <button style={{ width: '100%', textAlign: 'left', padding: '0.75rem 1rem', borderRadius: '0.5rem', background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <span className="material-symbols-outlined" style={{ fontSize: '1.125rem' }}>sync_alt</span>
+                            {t('admin.languages.experts.change_status')}
+                          </button>
+                          <div style={{ height: '1px', backgroundColor: 'var(--color-border)', margin: '0.25rem 0' }} />
+                          <button style={{ width: '100%', textAlign: 'left', padding: '0.75rem 1rem', borderRadius: '0.5rem', background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-error)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <span className="material-symbols-outlined" style={{ fontSize: '1.125rem' }}>delete</span>
+                            {t('admin.common.delete')}
+                          </button>
+                        </div>
+                      )}
                     </td>
                   </tr>
                 ))}

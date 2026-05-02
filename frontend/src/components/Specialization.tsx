@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Specialization: FC = () => {
@@ -8,7 +8,7 @@ const Specialization: FC = () => {
     <section style={{ padding: '6rem 0', backgroundColor: '#fff' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '5rem', alignItems: 'center' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
-          <div className="md:grid md:grid-cols-2 md:gap-20 items-center">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '5rem', alignItems: 'center' }}>
             <div>
               <h2 style={{ fontSize: '2.5rem', fontWeight: 900, letterSpacing: '-0.025em', marginBottom: '1.5rem', lineHeight: 1.1 }}>
                 {t('home.specialization.title')}
@@ -42,7 +42,7 @@ const Specialization: FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '1.5rem', borderRadius: '1rem', border: '1px solid var(--color-surface-container-highest)', backgroundColor: '#fff', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
                 <div style={{ color: 'var(--color-primary)' }}>
                   <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1", fontSize: '2rem' }}>eco</span>

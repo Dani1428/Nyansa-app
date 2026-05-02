@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ProjectTrendChart from '../../components/admin/ProjectTrendChart';
 
 interface DashboardStats {
@@ -10,6 +11,7 @@ interface DashboardStats {
 }
 
 const DashboardOverview = () => {
+  const { t } = useTranslation();
   const [stats, setStats] = useState<DashboardStats>({
     total_datasets: 0,
     active_projects: 0,
@@ -19,9 +21,22 @@ const DashboardOverview = () => {
   });
 
   useEffect(() => {
-    fetch('/api/v1/dashboard/metrics/')
-      .then(res => res.json())
-      .then(data => setStats(data))
+    const token = localStorage.getItem('token');
+    fetch('/api/v1/dashboard/metrics/', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Unauthorized');
+        return res.json();
+      })
+      .then(data => {
+        if (data && data.translation_accuracy) {
+          setStats(data);
+        }
+      })
       .catch(err => console.error('Error fetching dashboard metrics:', err));
   }, []);
 
@@ -29,8 +44,8 @@ const DashboardOverview = () => {
     <div className="admin-page-container">
       <div className="admin-page-header">
         <div>
-          <h1 className="admin-page-title">Dashboard Overview</h1>
-          <p className="admin-page-desc">Real-time performance metrics for global agricultural linguistic processing.</p>
+          <h1 className="admin-page-title">{t('admin.dashboard.title') || 'Dashboard Overview'}</h1>
+          <p className="admin-page-desc">{t('admin.dashboard.desc') || 'Real-time performance metrics for global agricultural linguistic processing.'}</p>
         </div>
       </div>
 
@@ -43,7 +58,7 @@ const DashboardOverview = () => {
             </div>
             <span className="admin-badge" style={{ backgroundColor: 'rgba(31, 122, 99, 0.1)', color: 'var(--color-primary)' }}>+12%</span>
           </div>
-          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>Active Projects</p>
+          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>{t('admin.dashboard.active_projects')}</p>
           <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>{stats.active_projects}</h3>
         </div>
 
@@ -55,7 +70,7 @@ const DashboardOverview = () => {
             </div>
             <span className="admin-badge" style={{ backgroundColor: 'rgba(31, 122, 99, 0.1)', color: 'var(--color-primary)' }}>+5.2%</span>
           </div>
-          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>Total Experts</p>
+          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>{t('admin.dashboard.total_experts')}</p>
           <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>{stats.total_experts}</h3>
         </div>
 
@@ -67,7 +82,7 @@ const DashboardOverview = () => {
             </div>
             <span className="admin-badge" style={{ backgroundColor: 'rgba(133, 64, 54, 0.1)', color: 'var(--color-tertiary)' }}>+18%</span>
           </div>
-          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>Datasets Available</p>
+          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>{t('admin.dashboard.total_datasets')}</p>
           <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>{stats.total_datasets}</h3>
         </div>
 
@@ -79,8 +94,8 @@ const DashboardOverview = () => {
             </div>
             <span className="admin-badge" style={{ backgroundColor: 'var(--color-surface-container-high)', color: 'var(--color-on-surface-variant)' }}>Stable</span>
           </div>
-          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>Translation Accuracy</p>
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>{stats.translation_accuracy[stats.translation_accuracy.length - 1]}%</h3>
+          <p style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--color-on-surface-variant)', marginBottom: '0.25rem' }}>{t('admin.dashboard.accuracy')}</p>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>{(stats.translation_accuracy && stats.translation_accuracy.length > 0) ? stats.translation_accuracy[stats.translation_accuracy.length - 1] : 0}%</h3>
         </div>
       </div>
 
@@ -88,8 +103,8 @@ const DashboardOverview = () => {
         <div className="admin-card" style={{ gridColumn: 'span 2' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
             <div>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 800 }}>Project Request Trends</h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-on-surface-variant)' }}>Volume of incoming linguistic analysis requests</p>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 800 }}>{t('admin.dashboard.trends')}</h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-on-surface-variant)' }}>{t('admin.dashboard.trends_desc') || 'Volume of incoming linguistic analysis requests'}</p>
             </div>
             <select style={{ padding: '0.5rem', borderRadius: '0.5rem', border: '1px solid var(--color-border)', fontSize: '0.75rem', fontWeight: 600 }}>
               <option>Last 30 Days</option>
@@ -104,21 +119,21 @@ const DashboardOverview = () => {
 
         <div className="admin-card" style={{ backgroundColor: 'var(--color-primary-container)', color: 'var(--color-white)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'relative', zIndex: 10 }}>
-            <span style={{ color: 'var(--color-on-primary-container)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '0.5rem' }}>System Status</span>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '1rem' }}>Linguistic Engine Core</h3>
+            <span style={{ color: 'var(--color-on-primary-container)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '0.5rem' }}>{t('admin.dashboard.system_status') || 'System Status'}</span>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '1rem' }}>{t('admin.dashboard.engine_core') || 'Linguistic Engine Core'}</h3>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
               <span style={{ width: '0.5rem', height: '0.5rem', borderRadius: '50%', backgroundColor: 'var(--color-secondary-container)' }}></span>
-              <span style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.8)' }}>All nodes operational</span>
+              <span style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.8)' }}>{t('admin.dashboard.operational') || 'All nodes operational'}</span>
             </div>
           </div>
           
           <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '0.5rem', border: '1px solid rgba(255,255,255,0.2)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'rgba(255,255,255,0.8)', marginBottom: '0.5rem' }}>
-              <span>Throughput</span>
-              <span>{stats.translation_accuracy[stats.translation_accuracy.length - 1]}%</span>
+              <span>{t('admin.dashboard.throughput') || 'Throughput'}</span>
+              <span>{(stats.translation_accuracy && stats.translation_accuracy.length > 0) ? stats.translation_accuracy[stats.translation_accuracy.length - 1] : 0}%</span>
             </div>
             <div style={{ width: '100%', height: '0.375rem', backgroundColor: 'rgba(0,0,0,0.3)', borderRadius: '9999px' }}>
-              <div style={{ width: `${stats.translation_accuracy[stats.translation_accuracy.length - 1]}%`, height: '100%', backgroundColor: 'var(--color-secondary-container)', borderRadius: '9999px' }}></div>
+              <div style={{ width: `${(stats.translation_accuracy && stats.translation_accuracy.length > 0) ? stats.translation_accuracy[stats.translation_accuracy.length - 1] : 0}%`, height: '100%', backgroundColor: 'var(--color-secondary-container)', borderRadius: '9999px' }}></div>
             </div>
           </div>
           

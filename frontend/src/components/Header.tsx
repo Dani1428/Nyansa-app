@@ -42,7 +42,7 @@ const Header = () => {
             {i18n.language.toUpperCase().split('-')[0]}
           </button>
           <Link to="/contact">
-            <button className="btn-primary" style={{ backgroundColor: 'var(--color-primary-container)', color: 'var(--color-on-primary-container)' }}>{t('nav.get_quote')}</button>
+            <button className="btn-primary" style={{ backgroundColor: 'var(--color-primary-container)', color: 'var(--color-white)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>{t('nav.get_quote')}</button>
           </Link>
         </div>
       </div>

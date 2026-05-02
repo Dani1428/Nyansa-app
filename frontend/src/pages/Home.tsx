@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
 import Trust from '../components/Trust';
@@ -5,8 +6,11 @@ import ServicesHome from '../components/ServicesHome';
 import Specialization from '../components/Specialization';
 import DatasetsPreview from '../components/DatasetsPreview';
 import CTAHome from '../components/CTAHome';
+import SplashScreen from '../components/SplashScreen';
 
 const Home = () => {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <>
       <Helmet>
@@ -16,8 +20,11 @@ const Home = () => {
         <meta property="og:description" content="High-quality datasets for African dialects and precision agriculture." />
         <meta property="og:type" content="website" />
       </Helmet>
+      
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      
       <Hero />
-      <Trust />
+      {/* <Trust /> */}
       <ServicesHome />
       <Specialization />
       <DatasetsPreview />

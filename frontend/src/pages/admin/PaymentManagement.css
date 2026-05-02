@@ -1,0 +1,163 @@
+.payment-management {
+  padding: 30px;
+  background: #f8f9fa;
+  min-height: calc(100vh - 80px);
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.header-content h1 {
+  margin: 0 0 10px 0;
+  color: #1a1a1a;
+  font-size: 2rem;
+}
+
+.header-content p {
+  margin: 0;
+  color: #666;
+}
+
+.summary-cards {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.summary-card {
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-card .label {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.summary-card .value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2ecc71;
+}
+
+.process-all-btn {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.process-all-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.process-all-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.table-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-table th {
+  text-align: left;
+  padding: 20px;
+  background: #fafafa;
+  color: #666;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.payment-table td {
+  padding: 20px;
+  border-bottom: 1px solid #f5f5f5;
+  color: #333;
+}
+
+.payment-table tr:last-child td {
+  border-bottom: none;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+.status-pill {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pill.pending { background: #fef9e7; color: #f1c40f; }
+.status-pill.processed { background: #eafaf1; color: #2ecc71; }
+.status-pill.failed { background: #fdedec; color: #e74c3c; }
+
+.small-action-btn {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.small-action-btn:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.export-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-left: 5px solid #2ecc71;
+}
+
+.export-section h3 {
+  margin: 0 0 10px 0;
+}
+
+.export-section p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.export-btn {
+  background: #2ecc71;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}

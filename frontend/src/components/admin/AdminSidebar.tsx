@@ -1,16 +1,22 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import logo from '../../assets/LOGOIA2.png';
 
 const AdminSidebar = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const currentPath = location.pathname;
 
   const navItems = [
-    { name: 'Dashboard', path: '/admin/dashboard', icon: 'dashboard' },
-    { name: 'Project Requests', path: '/admin/projects', icon: 'assignment_late' },
-    { name: 'Datasets Management', path: '/admin/datasets', icon: 'database' },
-    { name: 'Languages & Experts', path: '/admin/languages', icon: 'translate' },
-    { name: 'Settings', path: '/admin/settings', icon: 'settings' }
+    { name: t('admin.sidebar.dashboard'), path: '/admin/dashboard', icon: 'dashboard' },
+    { name: t('admin.sidebar.validation'), path: '/admin/validation', icon: 'verified_user' },
+    { name: t('admin.sidebar.missions'), path: '/admin/missions', icon: 'explore' },
+    { name: t('admin.sidebar.agents'), path: '/admin/agents', icon: 'person_search' },
+    { name: t('admin.sidebar.projects'), path: '/admin/projects', icon: 'assignment_late' },
+    { name: t('admin.sidebar.datasets'), path: '/admin/datasets', icon: 'database' },
+    { name: t('admin.sidebar.languages'), path: '/admin/languages', icon: 'translate' },
+    { name: t('admin.sidebar.payments'), path: '/admin/payments', icon: 'payments' },
+    { name: t('admin.sidebar.settings'), path: '/admin/settings', icon: 'settings' }
   ];
 
   return (
@@ -38,8 +44,8 @@ const AdminSidebar = () => {
       </nav>
 
       <div className="admin-sidebar-footer">
-        <Link to="/admin/projects" style={{ textDecoration: 'none', width: '100%' }}>
-          <button className="admin-btn-add">
+        <Link to="/admin/projects?create=true" style={{ textDecoration: 'none', width: '100%' }}>
+          <button className="admin-btn-add" style={{ width: '100%', cursor: 'pointer' }}>
             <span className="material-symbols-outlined">add</span>
             New Project
           </button>
