@@ -103,7 +103,7 @@ const LanguagesExperts = () => {
         const savedLang = await response.json();
         setLanguages([...languages, savedLang]);
         setIsModalOpen(false);
-        setNewLanguage({ code: '', name: '', samples_count: '0 Samples' });
+        setNewLanguage({ code: '', name: '', group: 'General', samples_count: '0 Samples' });
       }
     } catch (error) {
       console.error('Error adding language:', error);

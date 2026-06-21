@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^=%)u#lw33ny0fx1xwkk@t79*=_xr(zj*z@w2#sa-#&i%c99pd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.100.52', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['172.20.10.2', '192.168.100.52', 'localhost', '127.0.0.1', '*']
 
 
 # Application definition
@@ -84,11 +84,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://nyansa_ai:12345678@localhost:5433/nyansa_ai'
-    )
-}
+try:
+    import psycopg2
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgresql://nyansa_ai:12345678@localhost:5433/nyansa_ai'
+        )
+    }
+except ImportError:
+    import sys
+    print("WARNING: 'psycopg2' not found. Local environment will fall back to SQLite (db.sqlite3).", file=sys.stderr)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation

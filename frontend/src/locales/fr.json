@@ -267,7 +267,8 @@
     },
     "mission": {
       "title": "Notre Mission",
-      "desc": "Rendre l’intelligence agricole accessible en collectant, structurant et annotant les langues africaines sous forme de données exploitables par l’IA."
+      "desc": "Rendre l’intelligence agricole accessible en collectant, structurant et annotant les langues africaines sous forme de données exploitables par l’IA.",
+      "img_alt": "Agronome collectant des données vocales et agricoles sur le terrain en Afrique"
     },
     "vision": {
       "title": "Notre Vision",
@@ -285,6 +286,11 @@
       "s3_v": "500+",
       "s3_t": "Contributeurs & experts",
       "s3_d": "Annotateurs, agriculteurs et linguistes validant les données"
+    },
+    "founder": {
+      "title": "Rencontrez Notre Fondateur & PDG",
+      "mention": "Passionné par l’intelligence artificielle et les langues africaines, il construit NYANSA pour rendre l’IA accessible à tous.",
+      "role": "Fondateur & PDG, Nyansa AI"
     }
   },
   "agriculture": {
@@ -353,7 +359,14 @@
       "company": "Entreprise",
       "type": "Type de Projet",
       "message": "Message",
-      "submit": "Envoyer la Demande"
+      "submit": "Envoyer la Demande",
+      "projectTypes": [
+        "Acquisition de Dataset Linguistique",
+        "Entraînement de Modèle IA Personnalisé",
+        "Consulting en Science des Données Agricoles",
+        "Localisation de Logiciels",
+        "Autre"
+      ]
     },
     "header": {
       "badge": "Contacter Notre Équipe",
@@ -371,6 +384,7 @@
     }
   },
   "datasets": {
+    "badge": "Intelligence de Données",
     "title": "Catalogue de Datasets",
     "desc": "Accédez à des Datasets linguistiques et agricoles sélectionnés pour l'entraînement de modèles d'IA de haute précision. Nos données sont sourcées de manière éthique et vérifiées par des experts du domaine.",
     "explorer": {
@@ -417,7 +431,7 @@
     },
     "value": {
       "title": "Les langues peu documentées=une mine de valeur pour l’IA",
-      "desc": "Pour des millions d'agriculteurs à travers l'Afrique, la langue reste un obstacle à l'intelligence agricole moderne. En se concentrant sur les langues peu dotées, AgriLingua AI crée les Datasets fondamentaux nécessaires aux modèles d'IA inclusifs.",
+      "desc": "Pour des millions d'agriculteurs à travers l'Afrique, la langue reste un obstacle à l'intelligence agricole moderne. En se concentrant sur les langues peu dotées, Nyansa AI crée les Datasets fondamentaux nécessaires aux modèles d'IA inclusifs.",
       "p1": "Modèles d'IA Inclusifs",
       "p2": "Prospérité des Agriculteurs",
       "quote": "\"L'inclusivité linguistique est la prochaine frontière de la souveraineté numérique dans l'agriculture mondiale.\""

@@ -19,12 +19,12 @@ const PaymentManagement: React.FC = () => {
     try {
       const res = await fetch('/api/v1/payments/', {
         headers: {
-          'Authorization': `Token ${token}`
+          'Authorization': `Bearer ${token}`
         }
       });
       if (res.ok) {
         const data = await res.json();
-        setPayments(data);
+        setPayments(data.results || (Array.isArray(data) ? data : []));
       }
     } catch (err) {
       console.error('Error fetching payments:', err);
@@ -44,7 +44,7 @@ const PaymentManagement: React.FC = () => {
       const res = await fetch('/api/v1/payments/process_all/', {
         method: 'POST',
         headers: {
-          'Authorization': `Token ${token}`
+          'Authorization': `Bearer ${token}`
         }
       });
       if (res.ok) {

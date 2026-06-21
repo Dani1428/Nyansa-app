@@ -21,8 +21,7 @@ const DatasetExplorer = () => {
   };
 
   return (
-    <section className="dataset-explorer-section">
-      <div className="container">
+    <div className="dataset-explorer-wrapper">
         <div className="text-center mb-12">
           <div className="inline-block px-4 py-2 rounded-full mb-4" style={{ backgroundColor: 'var(--color-primary-container)', color: 'var(--color-on-primary-container)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Interactive Demo
@@ -183,8 +182,7 @@ const DatasetExplorer = () => {
             </div>
           )}
         </div>
-      </div>
-    </section>
+    </div>
   );
 };
 

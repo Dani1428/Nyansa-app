@@ -33,7 +33,7 @@ const Datasets = () => {
       .then(data => {
         // Handle DRF pagination results
         const datasetList = data.results || (Array.isArray(data) ? data : []);
-        
+
         if (datasetList.length > 0) {
           setDatasets(datasetList);
         } else {
@@ -74,49 +74,50 @@ const Datasets = () => {
       </Helmet>
 
       <div style={{ marginTop: '5rem' }}>
-        <header style={{ 
-          background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-container-low) 100%)', 
-          padding: '8rem 0 6rem',
-          borderBottom: '1px solid var(--color-border)'
+        <header style={{
+          background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-container-low) 100%)',
+          padding: '8rem 0',
+          borderBottom: '1px solid var(--color-border)',
+          overflow: 'hidden'
         }}>
-          <div className="container" style={{ textAlign: 'center' }}>
-            <div style={{ display: 'inline-block', backgroundColor: 'rgba(31, 122, 99, 0.1)', padding: '0.5rem 1.5rem', borderRadius: '9999px', marginBottom: '1.5rem' }}>
-              <span style={{ color: 'var(--color-primary)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em' }}>{t('datasets.badge') || 'Data Intelligence'}</span>
-            </div>
-            <h1 style={{ fontSize: '3.75rem', fontWeight: 900, maxWidth: '900px', margin: '0 auto 1.5rem', lineHeight: 1.1, letterSpacing: '-0.025em', color: 'var(--color-on-surface)' }}>
-              {t('datasets.title')}
-            </h1>
-            <p style={{ maxWidth: '700px', margin: '0 auto', fontSize: '1.25rem', lineHeight: 1.625, color: 'var(--color-on-surface-variant)' }}>
-              {t('datasets.desc')}
-            </p>
-          </div>
-        </header>
-
-        <main>
-          {/* Section: Interactive Preview */}
-          <section style={{ padding: '8rem 0', backgroundColor: 'var(--color-surface)' }}>
-            <div className="container">
-              <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                <h2 style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--color-on-surface)', marginBottom: '1rem' }}>
-                  Aperçu Interactif des Datasets
-                </h2>
-                <div style={{ width: '4rem', height: '4px', backgroundColor: 'var(--color-primary)', margin: '0 auto', borderRadius: '2px' }}></div>
-                <p style={{ marginTop: '1.5rem', color: 'var(--color-on-surface-variant)', fontSize: '1.125rem' }}>
-                  Testez nos capacités d'annotation et de vision par ordinateur en temps réel.
+          <div className="container">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))',
+              gap: '4rem',
+              alignItems: 'center'
+            }}>
+              {/* Left Column: Title and Description */}
+              <div style={{ textAlign: 'left' }}>
+                <div style={{ display: 'inline-block', backgroundColor: 'rgba(31, 122, 99, 0.1)', padding: '0.5rem 1.5rem', borderRadius: '9999px', marginBottom: '1.5rem' }}>
+                  <span style={{ color: 'var(--color-primary)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+                    {t('datasets.badge') || 'Data Intelligence'}
+                  </span>
+                </div>
+                <h1 style={{ fontSize: '3.5rem', fontWeight: 900, marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.025em', color: 'var(--color-on-surface)' }}>
+                  {t('datasets.title')}
+                </h1>
+                <p style={{ fontSize: '1.25rem', lineHeight: 1.625, color: 'var(--color-on-surface-variant)', maxWidth: '580px' }}>
+                  {t('datasets.desc')}
                 </p>
               </div>
-              
-              <div style={{ 
-                backgroundColor: 'var(--color-white)', 
-                borderRadius: '2rem', 
-                padding: '2rem',
-                boxShadow: '0 20px 50px rgba(0,0,0,0.05)',
-                border: '1px solid var(--color-border)'
+
+              {/* Right Column: Interactive Explorer Card */}
+              <div style={{
+                backgroundColor: 'var(--color-white)',
+                borderRadius: '2rem',
+                padding: '2.5rem 2rem 2rem',
+                boxShadow: '0 25px 60px rgba(0,0,0,0.06)',
+                border: '1px solid var(--color-border)',
+                width: '100%'
               }}>
                 <DatasetExplorer />
               </div>
             </div>
-          </section>
+          </div>
+        </header>
+
+        <main>
 
           {/* Section: Catalog */}
           <section style={{ padding: '8rem 0', backgroundColor: 'var(--color-bg)' }}>
@@ -131,11 +132,11 @@ const Datasets = () => {
               <div className="catalog-layout">
                 {/* Sidebar Filters */}
                 <aside className="sidebar">
-                  <div style={{ 
-                    position: 'sticky', 
-                    top: '7rem', 
-                    backgroundColor: 'var(--color-white)', 
-                    padding: '2rem', 
+                  <div style={{
+                    position: 'sticky',
+                    top: '7rem',
+                    backgroundColor: 'var(--color-white)',
+                    padding: '2rem',
                     borderRadius: '1.5rem',
                     border: '1px solid var(--color-border)',
                     boxShadow: '0 4px 15px rgba(0,0,0,0.02)'
@@ -176,26 +177,26 @@ const Datasets = () => {
                     <>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
                         {datasets.map(ds => (
-                          <div key={ds.id} className="dataset-card" style={{ 
-                            padding: '2rem', 
+                          <div key={ds.id} className="dataset-card" style={{
+                            padding: '2rem',
                             borderRadius: '1.5rem',
                             display: 'flex',
                             flexDirection: 'column',
                             height: '100%'
                           }}>
                             <div className="flex justify-between items-start" style={{ marginBottom: '1.5rem' }}>
-                              <span style={{ 
-                                backgroundColor: ds.dataset_type.includes('Audio') ? 'rgba(163, 87, 76, 0.1)' : 'rgba(31, 122, 99, 0.1)', 
-                                color: ds.dataset_type.includes('Audio') ? 'var(--color-tertiary)' : 'var(--color-primary)', 
-                                fontSize: '0.7rem', fontWeight: 800, padding: '0.4rem 1rem', borderRadius: '999px', textTransform: 'uppercase', letterSpacing: '0.05em' 
+                              <span style={{
+                                backgroundColor: ds.dataset_type.includes('Audio') ? 'rgba(163, 87, 76, 0.1)' : 'rgba(31, 122, 99, 0.1)',
+                                color: ds.dataset_type.includes('Audio') ? 'var(--color-tertiary)' : 'var(--color-primary)',
+                                fontSize: '0.7rem', fontWeight: 800, padding: '0.4rem 1rem', borderRadius: '999px', textTransform: 'uppercase', letterSpacing: '0.05em'
                               }}>
                                 {ds.dataset_type}
                               </span>
                               <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)', fontSize: '1.75rem', opacity: 0.3 }}>{ds.icon || 'database'}</span>
                             </div>
-                            
+
                             <h2 style={{ fontSize: '1.375rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-on-surface)', lineHeight: 1.3 }}>{ds.title}</h2>
-                            
+
                             <div style={{ marginBottom: '2rem', color: 'var(--color-on-surface-variant)', fontSize: '0.9375rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                               <div className="flex items-center gap-4">
                                 <span className="material-symbols-outlined" style={{ fontSize: '1.25rem', color: 'var(--color-primary)' }}>language</span>

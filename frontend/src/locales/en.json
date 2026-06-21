@@ -267,7 +267,8 @@
     },
     "mission": {
       "title": "Our Mission",
-      "desc": "To make agricultural intelligence accessible by collecting, structuring, and annotating African languages into AI-actionable data."
+      "desc": "To make agricultural intelligence accessible by collecting, structuring, and annotating African languages into AI-actionable data.",
+      "img_alt": "Agronomist collecting voice and agricultural field data in Africa"
     },
     "vision": {
       "title": "Our Vision",
@@ -285,6 +286,11 @@
       "s3_v": "500+",
       "s3_t": "Contributors & Experts",
       "s3_d": "Annotators, farmers, and linguists validating the data"
+    },
+    "founder": {
+      "title": "Meet Our Founder & CEO",
+      "mention": "Passionate about artificial intelligence and African languages, he is building NYANSA to make AI accessible to everyone.",
+      "role": "Founder & CEO, Nyansa AI"
     }
   },
   "agriculture": {
@@ -353,7 +359,14 @@
       "company": "Company",
       "type": "Project Type",
       "message": "Message",
-      "submit": "Send Inquiry"
+      "submit": "Send Inquiry",
+      "projectTypes": [
+        "Linguistic Dataset Acquisition",
+        "Custom AI Model Training",
+        "Agricultural Data Science Consulting",
+        "Software Localization",
+        "Other"
+      ]
     },
     "header": {
       "badge": "Contact Our Team",
@@ -371,6 +384,7 @@
     }
   },
   "datasets": {
+    "badge": "Data Intelligence",
     "title": "Datasets Catalog",
     "desc": "Access curated linguistic and agricultural Datasets for training high-precision AI models. Our data is ethically sourced and verified by domain experts.",
     "explorer": {
@@ -417,7 +431,7 @@
     },
     "value": {
       "title": "Low-resource languages = high value for AI",
-      "desc": "For millions of farmers across Africa, language remains a barrier to modern agricultural intelligence. By focusing on low-resource languages, AgriLingua AI creates the foundational Datasets necessary for inclusive AI models.",
+      "desc": "For millions of farmers across Africa, language remains a barrier to modern agricultural intelligence. By focusing on low-resource languages, Nyansa AI creates the foundational Datasets necessary for inclusive AI models.",
       "p1": "Inclusive AI Models",
       "p2": "Farmer Prosperity",
       "quote": "\"Language inclusivity is the next frontier of digital sovereignty in global agriculture.\""

@@ -8,14 +8,13 @@ class ApiService {
   factory ApiService() => _instance;
   ApiService._internal();
 
-  /// Automatically chooses correct URL:
   /// - Chrome/Web on same PC → localhost:8000
-  /// - iPhone / real device on network → 192.168.100.52:8000
+  /// - real device on network → 172.20.10.2:8000
   static String get baseUrl {
     if (kIsWeb) {
       return 'http://localhost:8000/api/v1';
     }
-    return 'http://192.168.100.52:8000/api/v1';
+    return 'http://172.20.10.2:8000/api/v1';
   }
 
   String? _token;

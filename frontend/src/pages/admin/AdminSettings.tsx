@@ -53,7 +53,8 @@ const AdminSettings = () => {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
-        setApiKeys(await res.json());
+        const data = await res.json();
+        setApiKeys(data.results || (Array.isArray(data) ? data : []));
       }
     } catch (err) {
       console.error('Error fetching API keys:', err);
